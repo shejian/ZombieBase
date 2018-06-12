@@ -1,14 +1,15 @@
+apply from: 'versions.gradle'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
 
-    defaultConfig(android)
+    defaultConfigw android
 
     defaultConfig {
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.00.1.6"
     }
 
     buildTypes {
