@@ -26,6 +26,5 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
-    implementation project(':eathsub')
-    implementation project(':submoon')
+
 }
