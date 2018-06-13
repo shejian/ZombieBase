@@ -138,7 +138,7 @@ deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_g
 ext.deps = deps
 
 def build_versions = [:]
-build_versions.min_sdk = 14
+build_versions.min_sdk = 19
 build_versions.target_sdk = 27
 build_versions.build_tools = "27.0.3"
 ext.build_versions = build_versions
@@ -169,23 +169,6 @@ def addRepos(RepositoryHandler handler) {
 }
 
 ext.addRepos = this.&addRepos
-
-//闭包代码块
-def setDefaultConfig = { android ->
-
-    android.compileSdkVersion build_versions.target_sdk
-
-    android.defaultConfig {
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-}
-
-ext.defaultConfigw = setDefaultConfig
-
-
 
 
 

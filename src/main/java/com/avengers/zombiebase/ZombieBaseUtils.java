@@ -1,7 +1,6 @@
 package com.avengers.zombiebase;
 
 
-import android.app.Application;
 import android.util.Log;
 
 import com.avengers.zombielibrary.BuildConfig;
@@ -11,15 +10,13 @@ public class ZombieBaseUtils {
     public ZombieBaseUtils() {
     }
 
-    public void getZombieLibraryInfo(){
+    public void getZombieLibraryInfo() {
 
 
-             Log.d("shejian",  BuildConfig.VERSION_NAME);
-
-         }
+        Log.d("shejian", BuildConfig.VERSION_NAME);
 
 
-
+    }
 
 
 }

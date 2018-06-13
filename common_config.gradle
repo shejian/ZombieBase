@@ -1,0 +1,171 @@
+apply from: '../zombiebase/versions.gradle'
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+
+/**
+ * Module的android配置，基本是一致的
+ */
+def setDefaultConfig = { android ->
+
+    android.compileSdkVersion build_versions.target_sdk
+
+    android.defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    android.buildTypes {
+
+        beta {
+            minifyEnabled false
+            proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+ext.defaultConfigw = setDefaultConfig
+
+/**
+ * Application Module的Lib配置
+ */
+def setDependencies = { extension ->
+
+    extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //所有的Appmodule需要关联 base的接口项目
+    extension.implementation deps.kotlin.stdlib
+    extension.implementation deps.support.app_compat
+    extension.implementation deps.support.design
+    extension.implementation deps.support.v4
+    extension.implementation deps.constraint_layout
+    extension.implementation deps.support.multidex
+    extension.implementation 'com.spinytech.ma:macore:0.2.1'
+    extension.testImplementation deps.junit
+    extension.androidTestImplementation deps.atsl.runner
+    extension.androidTestImplementation deps.espresso.core
+
+}
+
+ext.dds = setDependencies
+
+/**
+ * App的Module的gradle配置
+ */
+def setAppDefaultConfig = { extension ->
+
+    extension.apply plugin: 'com.android.application'
+
+    apply plugin: 'kotlin-android'
+
+    apply plugin: 'kotlin-android-extensions'
+
+    apply from: '../zombiebase/versions.gradle'
+
+    setDefaultConfig extension.android
+
+    setDependencies extension.dependencies
+
+}
+
+ext.appDefaultConfig = setAppDefaultConfig
+
+/************lib的配置*************/
+
+/**
+ * LibModule的Lib配置
+ */
+def setDefLibDependencies = { extension ->
+
+    extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
+    extension.implementation project(':zombiebase')//所有业务模块Lib需要关联baselib
+    extension.implementation 'com.spinytech.ma:macore:0.2.1'
+    extension.testImplementation deps.junit
+    extension.androidTestImplementation deps.atsl.runner
+    extension.androidTestImplementation deps.espresso.core
+
+}
+
+ext.libdefdds = setDefLibDependencies
+
+/**
+ * LibModule的gradle配置
+ */
+def setLibraryDefaultConfig = { extension ->
+
+    extension.apply plugin: 'com.android.library'
+
+    apply plugin: 'kotlin-android'
+
+    apply plugin: 'kotlin-android-extensions'
+
+    apply from: '../zombiebase/versions.gradle'
+
+    setDefaultConfig extension.android
+
+    setDefLibDependencies extension.dependencies
+
+}
+ext.libDefaultConfig = setLibraryDefaultConfig
+
+/**
+ * 组件 Module的Lib配置
+ */
+def setComponentsDependencies = { extension ->
+
+    extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //所有的Appmodule需要关联 base的接口项目
+    extension.implementation deps.kotlin.stdlib
+    extension.implementation deps.support.app_compat
+    extension.implementation deps.support.design
+    extension.implementation deps.support.v4
+    extension.implementation deps.constraint_layout
+    extension.implementation deps.support.multidex
+    extension.implementation 'com.spinytech.ma:macore:0.2.1'
+    extension.testImplementation deps.junit
+    extension.androidTestImplementation deps.atsl.runner
+    extension.androidTestImplementation deps.espresso.core
+
+}
+
+ext.cdds = setComponentsDependencies
+
+/**
+ * 组件 Module的gradle配置
+ */
+
+def setComponentsDefaultConfig = { extension ->
+
+    extension.apply plugin: 'com.android.library'
+
+    apply plugin: 'kotlin-android'
+
+    apply plugin: 'kotlin-android-extensions'
+
+    apply from: '../zombiebase/versions.gradle'
+
+    setDefaultConfig extension.android
+
+    setComponentsDependencies extension.dependencies
+
+}
+ext.componentsDefaultConfig = setComponentsDefaultConfig
+
+
+
+
+
+
+
+
+
+
+
