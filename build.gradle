@@ -22,9 +22,11 @@ dependencies {
     api deps.support.design
     api deps.support.v4
     api deps.constraint_layout
+
     api 'com.spinytech.ma:macore:0.2.1'
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
-
+    implementation project(':eathsub')
+    implementation project(':submoon')
 }
