@@ -17,6 +17,19 @@ def setDefaultConfig = { android ->
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                //ARouter 的配置
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+
+
+
+    android.dataBinding {
+        enabled = true
     }
 
     android.buildTypes {
@@ -42,6 +55,11 @@ def setDependencies = { extension ->
 
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     //所有的Appmodule需要关联 base的接口项目
+    // kapt 'com.android.databinding:compiler:3.0.1'
+    extension.annotationProcessor deps.kaptext.databinding
+    extension.annotationProcessor deps.lifecycle.compiler
+    extension.annotationProcessor ''
+    extension.implementation deps.lifecycle.extensions
     extension.implementation deps.kotlin.stdlib
     extension.implementation deps.support.app_compat
     extension.implementation deps.support.design
@@ -67,6 +85,8 @@ def setAppDefaultConfig = { extension ->
     apply plugin: 'kotlin-android'
 
     apply plugin: 'kotlin-android-extensions'
+
+    apply plugin: 'kotlin-kapt'
 
     apply from: '../zombiebase/versions.gradle'
 
@@ -106,6 +126,8 @@ def setLibraryDefaultConfig = { extension ->
     apply plugin: 'kotlin-android'
 
     apply plugin: 'kotlin-android-extensions'
+
+    apply plugin: 'kotlin-kapt'
 
     apply from: '../zombiebase/versions.gradle'
 

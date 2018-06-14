@@ -22,8 +22,9 @@ dependencies {
     api deps.support.design
     api deps.support.v4
     api deps.constraint_layout
-
     api 'com.spinytech.ma:macore:0.2.1'
+    api 'com.alibaba:arouter-api:1.1.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
