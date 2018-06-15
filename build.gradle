@@ -24,6 +24,7 @@ dependencies {
     api deps.support.v4
     api deps.constraint_layout
     api 'com.spinytech.ma:macore:0.2.1'
+    api 'com.yanzhenjie:permission:2.0.0-rc11'
     api deps.alibaba.arouter
     kapt deps.alibaba.arouter_compiler
     testImplementation deps.junit

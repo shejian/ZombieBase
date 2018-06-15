@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 浅灰色 -->
+    <color name="gray">#f1f1f1</color>
+    <!-- 背景灰 -->
+    <color name="bg_gray">#cccccc</color>
+    <!-- 深灰色 -->
+    <!-- 向日葵色 -->
+    <!-- 煤竹色 -->
+    <!-- 茶色 -->
+    <!-- 牡丹色 -->
+    <!-- 间绿色 -->
+    <!-- 橙色 -->
+    <color name="orange">#FF6600</color>
+    <!-- ea4801 -->
+    <color name="color_cursor">#E84A01</color>
+    <!-- 绿色 -->
+    <color name="green">#009901</color>
+    <!-- 字体颜色灰色 -->
+    <color name="textColor1">#666666</color>
+    <!-- 字体颜色蓝色 -->
+    <color name="textColor2">#CC0000</color>
+    <!-- 字体颜色浅灰 (hint) -->
+    <color name="textColor3">#999999</color>
+    <!-- 字体颜色白 -->
+    <!-- 字体颜色浅灰 -->
+    <!-- 字体绿 -->
+    <color name="textGreen2">#00aa82</color>
+    <!-- 主色调(太屋为红色) -->
+    <color name="mainColor">#FA3B3B</color>
+    <color name="mainColorMt">#f44336</color>
+    <color name="mainColor_new">#FA3B3B</color>
+    <color name="color_orange_ff8833">#ff8833</color>
+    <!--蓝色-->
+    <color name="blue">#3399ff</color>
+    <!-- 淡蓝色 (与巧房同名，且太屋数据未使用 注释)-->
+    <!--<color name="light_blue">#99ccff</color>-->
+    <!-- 线的颜色 -->
+    <color name="line">#b4b4b4</color>
+    <!-- 淡线的颜色 -->
+    <color name="light_line">#dddddd</color>
+    <!-- 橘红 -->
+    <color name="tangerine">#fe7875</color>
+    <!-- 灰色景色 -->
+    <color name="graybg">#f5f5f5</color>
+    <color name="light_black">#333333</color>
+    <color name="title_text_black">#333333</color>
+
+    <color name="text_gray_key">#787878</color>
+    <color name="text_gray_value">#3c3c3c</color>
+
+    <color name="text_hint_gray_value">#b4b4b4</color>
+    <!-- 烟白色 -->
+    <color name="white_smoke">#F5F5F5</color>
+
+    <!-- copy from message -->
+    <color name="gray_font">#818181</color>
+    <color name="main_content">#ff5f646e</color>
+    <color name="title_bar">#00aa82</color>
+    <color name="middleblue">#5f9cf9</color>
+    <color name="divider">#ffcccccc</color>
+    <color name="bgColor">#f9f9f9</color>
+    <color name="all_type">#dddddd</color>
+    <color name="msg_bg">#EEEEEE</color>
+    <color name="msg_time_bg">#DDDDDD</color>
+    <!-- 地图按钮半透明背景 -->
+    <color name="my_location_btn_bg">#BBBBBBBB</color>
+    <!-- 聊天图片边框颜色 -->
+
+    <!-- 二维码颜色 -->
+    <color name="bg_color">#EDEDED</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="transparent">#60000000</color>
+    <color name="gvtransparent">#00000000</color>
+    <color name="viewfinder_frame">#ff3399ff</color>
+    <color name="viewfinder_laser">#ff3399ff</color>
+    <color name="viewfinder_mask">#60000000</color>
+
+    <color name="red">#FF0000</color>
+    <!-- 提示消息服务器连接失败背景 -->
+    <color name="req_house_bg">#eef7ff</color>
+
+    <color name="tag_bg">#eda6a6</color>
+    <color name="house_tag_bg_sale">#f1f9f9</color>
+    <color name="house_tag_bg_lease">#f3f4f8</color>
+    <color name="house_tag_text_color_sale">#61c1bf</color>
+    <color name="house_tag_text_color_lease">#559aed</color>
+    <color name="emty_bg">#f5f5f5</color>
+
+
+    <color name="drag_color">#99787878</color>
+    <color name="color_30_drag">#b3787878</color>
+
+    <!-- ******************************************************************************* -->
+    <color name="main_red_color">#FA3B3B</color>
+    <color name="main_gray_color">#747e89</color>
+
+    <color name="window_background_color">#f7f7f7</color>
+    <color name="window_background_color1">#f6f3f7</color>
+    <color name="window_background_color2">#eceff1</color>
+    <color name="window_background_color3">#f7f4f8</color>
+    <color name="color_616161">#616161</color>
+    <color name="color_585858">#585858</color>
+    <color name="color_f7f7f7">#f7f7f7</color>
+    <color name="setNotificationBgColor">#ff001f</color>
+
+    <color name="colorInactive">#747474</color>
+
+    <color name="global_background">#f1f1f1</color>
+    <color name="material_grey_100">#fff5f5f5</color>
+
+    <color name="color_212121">#212121</color>
+    <color name="color_757575">#757575</color>
+    <color name="color_green_2sf">#61c1bf</color>
+    <color name="color_787878">#787878</color>
+    <color name="color_414141">#414141</color>
+
+    <!-- 透明色   87=#de,54=#8A ,26=#42-->
+    <color name="black">#000000</color>
+    <color name="black_5_color">#0c000000</color>
+    <color name="black_10_color">#1A000000</color>
+    <color name="black_20_color">#33000000</color>
+    <color name="black_26_color">#42000000</color>
+    <color name="black_30_color">#4D000000</color>
+    <color name="black_40_color">#66000000</color>
+    <color name="black_50_color">#80000000</color>
+    <color name="black_54_color">#8A000000</color>
+    <color name="black_60_color">#99000000</color>
+    <color name="black_70_color">#BF000000</color>
+    <color name="black_80_color">#CC000000</color>
+    <color name="black_87_color">#de000000</color>
+    <color name="black_90_color">#E6000000</color>
+    <color name="white">#ffffff</color>
+    <color name="color_fafafa">#fafafa</color>
+    <color name="color_fefefe">#fefefe</color>
+    <color name="color_titleview">#ffffff</color>
+    <color name="color_titleview1">#f5f5f5</color>
+
+    <color name="color_ffffffff">#ffffffff</color>
+    <color name="color_00ffffff">#00ffffff</color>
+    <color name="white_5_color">#0cffffff</color>
+    <color name="white_10_color">#1Affffff</color>
+    <color name="white_20_color">#33ffffff</color>
+    <color name="white_30_color">#4Dffffff</color>
+    <color name="white_50_color">#80ffffff</color>
+    <color name="white_54_color">#8Affffff</color>
+    <color name="white_60_color">#99ffffff</color>
+    <color name="white_80_color">#CCffffff</color>
+    <color name="white_87_color">#deffffff</color>
+    <color name="white_90_color">#E6ffffff</color>
+
+    <color name="color_f0f0f0">#f0f0f0</color>
+    <color name="main_red_30">#4dFA3B3B</color>
+    <color name="main_red_50">#7FFA3B3B</color>
+    <color name="color_eff0f0">#eff0f0</color>
+
+    <color name="color_3f3f3f">#3f3f3f</color>
+    <color name="color_b4b4b4">#b4b4b4</color>
+    <color name="color_f73e42">#f73e42</color>
+    <color name="color_3c3c3c">#3c3c3c</color>
+    <color name="black_a10">#1a000000</color>
+
+    <color name="color_dddddd">#dddddd</color>
+
+    <color name="color_f39826">#f39826</color>
+    <color name="color_f15a4a">#f15a4a</color>
+    <color name="color_0476df">#0476df</color>
+    <color name="color_61c1bf">#61c1bf</color>
+    <color name="color_1e8ff8">#1e8ff8</color>
+    <color name="color_559aed">#559aed</color>
+    <color name="main_top_deep_color">#292929</color>
+    <color name="main_top_deep_line_color">#1c1c1c</color>
+    <color name="color_c6c6c6">#c6c6c6</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_fff9ec">#fff9ec</color>
+    <color name="color_fd3833">#fd3833</color>
+    <color name="color_6e6e6e">#6e6e6e</color>
+    <color name="color_1e8ef8">#1e8ef8</color>
+    <color name="color_f73d41">#f73d41</color>
+
+
+    <color name="material_blue_50">#E3F2FD</color>
+    <color name="material_blue_100">#BBDEFB</color>
+    <color name="material_blue_200">#90CAF9</color>
+    <color name="material_blue_300">#64B5F6</color>
+    <color name="material_blue_400">#42A5F5</color>
+    <color name="material_blue_500">#2196F3</color>
+    <color name="material_blue_600">#1E88E5</color>
+    <color name="material_blue_700">#1976D2</color>
+    <color name="material_blue_800">#1565C0</color>
+    <color name="material_blue_900">#0D47A1</color>
+
+
+    <color name="material_deep_teal_50">#ffe0f2f1</color>
+    <color name="material_deep_teal_100">#ffb2dfdb</color>
+    <color name="material_deep_teal_200">#ff80cbc4</color>
+    <color name="material_deep_teal_300">#ff4db6ac</color>
+    <color name="material_deep_teal_500">#ff009688</color>
+    <color name="material_deep_teal_700">#ff00796b</color>
+
+    <color name="material_blue_grey_200">#ffb0bec5</color>
+    <color name="material_blue_grey_700">#ff455a64</color>
+    <color name="material_blue_grey_800">#ff37474f</color>
+    <color name="material_blue_grey_900">#ff263238</color>
+    <color name="material_blue_grey_950">#ff21272b</color>
+
+    <color name="dialog_blue">#265DB6</color>
+
+    <!--地图筛选栏，区域/板块的选择背景-->
+    <color name="color_area_district_selected">@color/white</color>
+    <color name="color_area_district_normal">#F5F5F5</color>
+
+    <color name="filter_title_blue">#4aa7fc</color>
+    <color name="color_area_item_selected">#49a6fc</color>
+
+    <!--链家-->
+    <color name="store_line_color1">#de009688</color>
+    <!--中原-->
+    <color name="store_line_color2">#deff9800</color>
+    <!--我爱我家-->
+    <color name="store_line_color3">#de673ab7</color>
+    <!--太平洋-->
+    <color name="store_line_color4">#dee51c23</color>
+    <!--精英-->
+    <color name="store_line_color5">#1976D2</color>
+
+    <color name="material_deep_orange_400">#ff7043</color>
+    <color name="material_deep_orange_500">#ff5722</color>
+    <color name="material_deep_orange_600">#f4511e</color>
+    <color name="material_deep_orange_700">#e64a19</color>
+    <color name="material_deep_orange_800">#d84315</color>
+    <color name="material_deep_orange_900">#bf360c</color>
+<!--    <color name="material_deep_orange_A700">#dd2c00</color>-->
+    <color name="material_deep_orange_A700">#dd2c00</color>
+<!--    <color name="material_red_100">#f69988</color>-->
+    <color name="material_red_100">#fd8a8a</color>
+    <color name="color_question_tip">#B5B5B5</color>
+
+    <color name="color_estate_scatter1">#dd2c00</color>
+    <color name="color_estate_scatter2">#25CD1E</color>
+    <color name="color_estate_scatter3">#2ECDCB</color>
+    <color name="color_estate_scatter4">#666666</color>
+
+</resources>
