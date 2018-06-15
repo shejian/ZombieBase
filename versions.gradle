@@ -52,6 +52,7 @@ versions.work = "1.0.0-alpha02"
 versions.navigation = "1.0.0-alpha01"
 versions.databinding = versions.android_gradle_plugin
 versions.arouter_compiler = "1.1.4"
+versions.arouter_api = "1.1.0"
 def deps = [:]
 
 def support = [:]
@@ -164,14 +165,14 @@ deps.navigation = navigation
 
 
 def alibaba = [:]
-alibaba.arouter = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+alibaba.arouter = "com.alibaba:arouter-api:$versions.arouter_api"
 alibaba.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
-ext.alibaba = alibaba
+deps.alibaba = alibaba
 
 
 def kaptext = [:]
 kaptext.databinding = "com.android.databinding:compiler:$versions.databinding"
-ext.kapt = kaptext
+deps.kapt = kaptext
 
 def addRepos(RepositoryHandler handler) {
     handler.google()

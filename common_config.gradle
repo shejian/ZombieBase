@@ -18,15 +18,13 @@ def setDefaultConfig = { android ->
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                //ARouter 的配置
-                arguments = [moduleName: project.getName()]
+        kapt {
+            arguments {
+                arg("moduleName", project.getName())
             }
         }
+
     }
-
-
 
     android.dataBinding {
         enabled = true
@@ -56,9 +54,10 @@ def setDependencies = { extension ->
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     //所有的Appmodule需要关联 base的接口项目
     // kapt 'com.android.databinding:compiler:3.0.1'
-    extension.annotationProcessor deps.kaptext.databinding
-    extension.annotationProcessor deps.lifecycle.compiler
-    extension.annotationProcessor ''
+    extension.kapt deps.kapt.databinding
+    extension.kapt deps.lifecycle.compiler
+    extension.kapt deps.alibaba.arouter_compiler
+    extension.implementation deps.alibaba.arouter
     extension.implementation deps.lifecycle.extensions
     extension.implementation deps.kotlin.stdlib
     extension.implementation deps.support.app_compat
@@ -70,7 +69,6 @@ def setDependencies = { extension ->
     extension.testImplementation deps.junit
     extension.androidTestImplementation deps.atsl.runner
     extension.androidTestImplementation deps.espresso.core
-
 }
 
 ext.dds = setDependencies
@@ -87,6 +85,7 @@ def setAppDefaultConfig = { extension ->
     apply plugin: 'kotlin-android-extensions'
 
     apply plugin: 'kotlin-kapt'
+
 
     apply from: '../zombiebase/versions.gradle'
 
@@ -108,9 +107,11 @@ def setDefLibDependencies = { extension ->
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     extension.implementation project(':zombiebase')//所有业务模块Lib需要关联baselib
     extension.implementation 'com.spinytech.ma:macore:0.2.1'
+    extension.kapt deps.alibaba.arouter_compiler
     extension.testImplementation deps.junit
     extension.androidTestImplementation deps.atsl.runner
     extension.androidTestImplementation deps.espresso.core
+
 
 }
 
