@@ -18,6 +18,7 @@ abstract class BasePremissionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initPermission()
+
     }
 
 
