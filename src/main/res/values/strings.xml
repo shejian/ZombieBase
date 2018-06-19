@@ -1,11 +1,11 @@
 <resources>
 
-    <string name="setting">Setting</string>
-    <string name="resume">Resume</string>
-    <string name="cancel">Cancel</string>
-    <string name="title_dialog">Tips</string>
+    <string name="setting">去设置</string>
+    <string name="resume">继续</string>
+    <string name="cancel">取消</string>
+    <string name="title_dialog">请授权</string>
     <string name="message_permission_rationale">Grant the following permissions to continue the program:\n\n%1$s</string>
-    <string name="message_permission_always_failed">Please give us permission in the settings:\n\n%1$s</string>
+    <string name="message_permission_always_failed">请在"权限设置"界面授予以下权限:\n\n%1$s</string>
     <string name="message_setting_comeback">The user comes back from the settings page.</string>
 
     <string name="message_install_failed">Your phone is not allowed us to install apps.</string>

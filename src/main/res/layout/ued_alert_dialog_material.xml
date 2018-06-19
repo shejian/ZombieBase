@@ -31,9 +31,11 @@
         <LinearLayout
             android:id="@+id/title_template"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:gravity="center"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@android:id/icon"
@@ -46,20 +48,23 @@
 
             <android.support.v7.widget.DialogTitle
                 android:id="@+id/alertTitle"
-                android:text="这是标题"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
                 android:ellipsize="end"
-                android:textStyle="bold"
+                android:maxLines="1"
+                android:text="这是标题"
                 android:textColor="#212121"
-                android:textSize="16sp"
-                android:maxLines="1" />
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
         <View
-            android:background="#bdbdbd"
             android:layout_width="match_parent"
-            android:layout_height="1px"/>
+            android:layout_height="1px"
+            android:background="#bdbdbd"
+            android:visibility="gone" />
         <!-- If the client uses a customTitle, it will be added here. -->
     </LinearLayout>
 
@@ -94,15 +99,15 @@
                     android:id="@android:id/message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="主要内容是这样的"
-                    android:minHeight="88dp"
                     android:gravity="center_vertical"
+                    android:minHeight="66dp"
+                    android:paddingBottom="16dp"
                     android:paddingLeft="24dp"
                     android:paddingRight="24dp"
-                    android:textSize="14dp"
+                    android:paddingTop="16dp"
+                    android:text="主要内容是这样的"
                     android:textColor="#212121"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="16dp" />
+                    android:textSize="15dp" />
 
                 <View
                     android:id="@+id/textSpacerNoButtons"
@@ -126,7 +131,7 @@
         android:id="@+id/customPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <FrameLayout
             android:id="@+id/custom"
@@ -135,10 +140,10 @@
     </FrameLayout>
 
     <View
-        android:background="#bdbdbd"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="1px"/>
+        android:layout_height="1px"
+        android:background="#bdbdbd"
+        android:visibility="gone" />
 
     <include layout="@layout/ued_alert_dialog_button_bar_material" />
 </LinearLayout>

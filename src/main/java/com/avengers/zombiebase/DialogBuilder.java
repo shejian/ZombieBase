@@ -22,13 +22,14 @@ import com.avengers.zombielibrary.R;
  */
 public abstract class DialogBuilder {
 
-    public static AlertDialog.Builder getAlertDialog(Context mContext) {
+    public static AlertDialog.Builder buildAlertDialog(Context mContext) {
         return new AlertDialog.Builder(mContext);
     }
 
-    public static AlertDialog.Builder getAlertDialog(Context mContext, int theme) {
+    public static AlertDialog.Builder buildAlertDialog(Context mContext, int theme) {
         return new AlertDialog.Builder(mContext, theme);
     }
+
 
 
     /**
@@ -39,7 +40,6 @@ public abstract class DialogBuilder {
      */
     public static void showSimpleDialog(String message, Context context) {
         showSimpleDialog(message, context, null);
-
     }
 
     /**
@@ -86,7 +86,7 @@ public abstract class DialogBuilder {
      * @param positive
      */
     public static void customSimpleDialog(String message, Context context, OnClickListener listener, String positive) {
-        getAlertDialog(context).setPositiveButton(positive, listener).setView(getSingleMsgView(context, message)).setCancelable(false).show();
+        buildAlertDialog(context).setPositiveButton(positive, listener).setView(getSingleMsgView(context, message)).setCancelable(false).show();
     }
 
 
@@ -138,7 +138,7 @@ public abstract class DialogBuilder {
 
 
     public static AlertDialog showSimpleListDialog(Context context, String dialog_title, String[] itemStrings, String positiveStr, OnClickListener itemListener) {
-        AlertDialog.Builder b = getAlertDialog(context);
+        AlertDialog.Builder b = buildAlertDialog(context);
         b.setTitle(dialog_title);
         b.setItems(itemStrings, itemListener);
         b.setPositiveButton(positiveStr, null);
@@ -173,7 +173,7 @@ public abstract class DialogBuilder {
      * @return
      */
     public static AlertDialog showSimpleDialog(Context context, String title, CharSequence message, String negMessage, OnClickListener mNegativeButtonListener, String posMessage, OnClickListener mPositiveButtonListener) {
-        AlertDialog.Builder alertDialogBuild = getAlertDialog(context);
+        AlertDialog.Builder alertDialogBuild = buildAlertDialog(context);
         if (TextUtils.isEmpty(title)) {
             alertDialogBuild.setView(getSingleMsgView(context, message));
         } else if (TextUtils.isEmpty(message)) {
@@ -186,7 +186,7 @@ public abstract class DialogBuilder {
     }
 
     public static AlertDialog showSimpleDialogCenter(Context context, String title, CharSequence message, String negMessage, OnClickListener mNegativeButtonListener, String posMessage, OnClickListener mPositiveButtonListener) {
-        AlertDialog.Builder alertDialogBuild = getAlertDialog(context);
+        AlertDialog.Builder alertDialogBuild = buildAlertDialog(context);
         if (TextUtils.isEmpty(title)) {
             alertDialogBuild.setView(getSingleTitleView(context, message));
         } else if (TextUtils.isEmpty(message)) {
@@ -202,11 +202,11 @@ public abstract class DialogBuilder {
  /*   public static AlertDialog showProgressTextHorDialog(Context context, String msg) {
         View loadView = View.inflate(context, R.layout.progress_l_hor_dialog, null);
         ((TextView) loadView.findViewById(R.id.message)).setText(msg);
-        return getAlertDialog(context).setView(loadView).show();
+        return buildAlertDialog(context).setView(loadView).show();
     }*/
 
     public static AlertDialog showCustomViewDialog(Context context, View view) {
-        AlertDialog.Builder b = getAlertDialog(context);
+        AlertDialog.Builder b = buildAlertDialog(context);
         b.setView(view);
         return b.show();
     }
@@ -224,7 +224,7 @@ public abstract class DialogBuilder {
      * @param selectedBack
      */
     public static void showSingleChoiceDialog(Context mContext, String titleStr, String[] roomTitle, int checkedItem, final SelectedBackEvent selectedBack) {
-        AlertDialog.Builder builder = DialogBuilder.getAlertDialog(mContext);
+        AlertDialog.Builder builder = DialogBuilder.buildAlertDialog(mContext);
         builder.setTitle(titleStr);
         builder.setSingleChoiceItems(roomTitle, checkedItem, new OnClickListener() {
             @Override
@@ -259,7 +259,7 @@ public abstract class DialogBuilder {
         // TextView tv = new TextView(context);
         // tv.setText(message);
         // mCancelableDialog = new AlertDialog.Builder(context).setView(tv).setCancelable(true).create();
-        mCancelableDialog = getAlertDialog(context).setMessage(message).setCancelable(true).create();
+        mCancelableDialog = buildAlertDialog(context).setMessage(message).setCancelable(true).create();
         mCancelableDialog.setOnCancelListener(new OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {

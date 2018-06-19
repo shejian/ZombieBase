@@ -10,8 +10,8 @@ android {
     defaultConfigw android
 
     defaultConfig {
-        versionCode 100
-        versionName "1.00.1.6"
+        versionCode 16
+        versionName "0.00.1.6"
     }
 
 }
@@ -32,4 +32,6 @@ dependencies {
     androidTestImplementation deps.espresso.core
     implementation project(':eathsub')
     implementation project(':submoon')
+/*    implementation 'com.github.cd-butterfly:retrofit:1.0.0-SNAPSHOT'
+    kapt  'com.github.cd-butterfly:retrofit-compiler:1.0.0-SNAPSHOT'*/
 }

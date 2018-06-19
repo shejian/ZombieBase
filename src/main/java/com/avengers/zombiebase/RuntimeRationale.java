@@ -32,10 +32,18 @@ import java.util.List;
  */
 public final class RuntimeRationale implements Rationale<List<String>> {
 
+
+
     @Override
     public void showRationale(Context context, List<String> permissions, final RequestExecutor executor) {
         List<String> permissionNames = Permission.transformText(context, permissions);
         String message = context.getString(R.string.message_permission_rationale, TextUtils.join("\n", permissionNames));
+        executor.execute();
+/*
+        if (status==1){
+            return ;
+        }
+
 
         new AlertDialog.Builder(context)
                 .setCancelable(false)
@@ -53,6 +61,6 @@ public final class RuntimeRationale implements Rationale<List<String>> {
                         executor.cancel();
                     }
                 })
-                .show();
+                .show();*/
     }
 }
