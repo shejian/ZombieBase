@@ -52,15 +52,14 @@ def setDefaultConfig = { android ->
 
     android.productFlavors {
         appx {
-            dimension  "default"
+            dimension "default"
             minSdkVersion 18
         }
-        instant{
+        instant {
             minSdkVersion 21
 
         }
     }
-
 
 
 }
