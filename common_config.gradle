@@ -32,6 +32,11 @@ def setDefaultConfig = { android ->
 
     android.buildTypes {
 
+        debug {
+            minifyEnabled false
+            proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
         beta {
             minifyEnabled false
             proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -42,6 +47,21 @@ def setDefaultConfig = { android ->
             proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    android.flavorDimensions "default"
+
+    android.productFlavors {
+        appx {
+            dimension  "default"
+            minSdkVersion 18
+        }
+        instant{
+            minSdkVersion 21
+
+        }
+    }
+
+
 
 }
 ext.defaultConfigw = setDefaultConfig
@@ -105,7 +125,7 @@ ext.appDefaultConfig = setAppDefaultConfig
 def setDefLibDependencies = { extension ->
 
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
-    extension.implementation project(':zombiebase')//所有业务模块Lib需要关联baselib
+    extension.implementation extension.project(path: ':zombiebase')//所有业务模块Lib需要关联baselib
     extension.implementation 'com.spinytech.ma:macore:0.2.1'
     extension.kapt deps.alibaba.arouter_compiler
     extension.testImplementation deps.junit

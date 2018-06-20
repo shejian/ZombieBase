@@ -1,5 +1,6 @@
 package com.avengers.zombiebase
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import com.avengers.zombielibrary.R
@@ -8,7 +9,7 @@ import com.yanzhenjie.permission.Permission
 
 object RunTimePermission {
 
-    open fun requestPermission(context: AppCompatActivity, onSuccess: () -> Unit, vararg permissionss: String) {
+    fun requestPermission(context: Context, onSuccess: () -> Unit, vararg permissionss: String) {
         AndPermission.with(context)
                 .runtime()
                 .permission(*permissionss)
@@ -29,7 +30,7 @@ object RunTimePermission {
     /**
      * 轻度拒绝后做提示
      */
-    private fun showDeniedDialog(context: AppCompatActivity, onSuccess: () -> Unit, vararg permissions: String) {
+    private fun showDeniedDialog(context: Context, onSuccess: () -> Unit, vararg permissions: String) {
         DialogBuilder.buildAlertDialog(context)
                 .setTitle("请授权")
                 .setMessage("需要一些权限才能正常使用该功能")
@@ -46,7 +47,7 @@ object RunTimePermission {
     /**
      * Display setting dialog.
      */
-    private fun showSettingDialog(context: AppCompatActivity, permissions: List<String>) {
+    private fun showSettingDialog(context: Context, permissions: List<String>) {
         val permissionNames = Permission.transformText(context, permissions)
         val message = context.getString(R.string.message_permission_always_failed, TextUtils.join("\n", permissionNames))
 
@@ -58,7 +59,7 @@ object RunTimePermission {
                 .show()
     }
 
-    private fun setPermission(context: AppCompatActivity) {
+    private fun setPermission(context: Context) {
         AndPermission.with(context)
                 .runtime()
                 .setting()
