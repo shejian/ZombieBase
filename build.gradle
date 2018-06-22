@@ -25,27 +25,21 @@ dependencies {
     api deps.constraint_layout
     api 'com.spinytech.ma:macore:0.2.1'
     api 'com.yanzhenjie:permission:2.0.0-rc11'
-
     api deps.alibaba.arouter
     kapt deps.alibaba.arouter_compiler
-
     api 'com.github.cd-butterfly:retrofit:1.0.1'
     kapt 'com.github.cd-butterfly:retrofit-compiler:1.0.1'
-
     api deps.lifecycle.runtime
     api deps.lifecycle.extensions
     kapt deps.lifecycle.compiler
-
     kapt deps.kapt.databinding
-
     kapt deps.room.compiler
     api deps.room.runtime
     api deps.room.guava
-
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
     implementation project(':eathsub')
     implementation project(':submoon')
-
+    implementation project(':oildata')
 }

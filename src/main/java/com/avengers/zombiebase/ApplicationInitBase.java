@@ -34,12 +34,22 @@ public class ApplicationInitBase {
     }
 
 
+    private static AppExecutors appExecutors;
+
+    public static AppExecutors getInstanceExecutors() {
+        if (appExecutors == null) {
+            return new AppExecutors();
+        }
+        return appExecutors;
+    }
+
+
     public static void initWebServer(String baseurl) {
         RetrofitManager.Config.Builder builder = new RetrofitManager.Config.Builder();
 
         HashMap<String, String> headers = new HashMap<>(2);
-       // headers.put("pt", "android");
-       // headers.put("timestamp", String.valueOf(System.currentTimeMillis()));
+        // headers.put("pt", "android");
+        // headers.put("timestamp", String.valueOf(System.currentTimeMillis()));
 
         builder.setBaseUrl(baseurl).
                 /*            setSignFactory(new Sign.Factory() {
@@ -67,8 +77,6 @@ public class ApplicationInitBase {
                 setHeaders(headers);
 
         RetrofitManager.init(builder.build());
-
-
     }
 
 

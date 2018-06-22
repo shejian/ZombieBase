@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewDataBinding> extends RecyclerView.Adapter<DataBindingLiteAdapter.DbdLiteHolder<E>> {
 
-    public interface DbdAdapterEvent<E extends ViewDataBinding, T extends BaseObservable> {
+    public interface DbdAdapterEvent<T extends BaseObservable, E extends ViewDataBinding> {
         /**
          * 需要在itemView设置中做特殊逻辑处理时使用的
          *
@@ -33,7 +33,7 @@ public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewData
     private int layoutId;
     private int bdId;
     private List<T> list;
-    private DbdAdapterEvent<E, T> dbdAdapterEvent;
+    private DbdAdapterEvent<T, E> dbdAdapterEvent;
 
     private DataBindingLiteAdapter(final List<T> list, final int layoutId, int bdId) {
         this.list = list;
@@ -41,7 +41,7 @@ public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewData
         this.bdId = bdId;
     }
 
-    public DataBindingLiteAdapter(final List<T> list, final int layoutId, int bdId, DbdAdapterEvent<E, T> dbdAdapterEvent) {
+    public DataBindingLiteAdapter(final List<T> list, final int layoutId, int bdId, DbdAdapterEvent<T, E> dbdAdapterEvent) {
         this(list, layoutId, bdId);
         this.dbdAdapterEvent = dbdAdapterEvent;
     }
