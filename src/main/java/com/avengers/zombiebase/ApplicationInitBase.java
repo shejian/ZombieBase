@@ -46,36 +46,8 @@ public class ApplicationInitBase {
 
     public static void initWebServer(String baseurl) {
         RetrofitManager.Config.Builder builder = new RetrofitManager.Config.Builder();
-
-        HashMap<String, String> headers = new HashMap<>(2);
-        // headers.put("pt", "android");
-        // headers.put("timestamp", String.valueOf(System.currentTimeMillis()));
-
-        builder.setBaseUrl(baseurl).
-                /*            setSignFactory(new Sign.Factory() {
-                                @Override
-                                public Sign get() {
-                                    return new Sign() {
-                                        @Override
-                                        public Map<String, Object> sign(Map<String, Object> map, String signKey) {
-                                            return SignUtil.sign(map, signKey);
-                                        }
-
-                                        @Override
-                                        public String sign(String source, String signKey) {
-                                            return SignUtil.sign(source, signKey);
-                                        }
-
-                                        @Override
-                                        public String getSignKey() {
-                                            return BuildConfig.SECRET_KEY;
-                                        }
-                                    };
-                                }
-                            }).*/
-                        setLog(true).
-                setHeaders(headers);
-
+        HashMap<String, String> headers = new HashMap<>(10);
+        builder.setBaseUrl(baseurl).setLog(true).setHeaders(headers);
         RetrofitManager.init(builder.build());
     }
 

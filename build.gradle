@@ -41,5 +41,5 @@ dependencies {
     androidTestImplementation deps.espresso.core
     implementation project(':eathsub')
     implementation project(':submoon')
-    implementation project(':oildata')
+
 }
