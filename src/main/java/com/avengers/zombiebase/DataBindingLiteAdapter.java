@@ -47,6 +47,9 @@ public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewData
     }
 
     public void setNewList(List<T> list) {
+        if (list == null || list.size() == 0) {
+            return;
+        }
         this.list.clear();
         this.list.addAll(list);
         notifyDataSetChanged();
