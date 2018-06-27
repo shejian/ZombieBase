@@ -47,5 +47,10 @@ public class ZombieBaseUtils {
         return ARouter.getInstance().build(routerPath);
     }
 
+    public static void initRegProvider(LocalRouter localRouter) {
+        localRouter.registerProvider(UtilProvider.class.getName(), new UtilProvider());
+
+
+    }
 
 }

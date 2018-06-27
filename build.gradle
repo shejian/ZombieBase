@@ -36,6 +36,7 @@ dependencies {
     kapt deps.room.compiler
     api deps.room.runtime
     api deps.room.guava
+    api deps.paging
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core

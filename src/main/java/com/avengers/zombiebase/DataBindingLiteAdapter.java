@@ -84,7 +84,7 @@ public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewData
 
         E viewDataBinding;
 
-        DbdLiteHolder(E binding) {
+        public   DbdLiteHolder(E binding) {
             super(binding.getRoot());
             viewDataBinding = binding;
         }
