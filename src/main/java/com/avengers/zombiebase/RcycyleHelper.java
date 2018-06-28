@@ -17,7 +17,7 @@ public class RcycyleHelper {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     public static void initSwipeRefresh(SwipeRefreshLayout mSwipeRefreshLayout) {
