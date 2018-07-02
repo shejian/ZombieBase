@@ -41,4 +41,5 @@ dependencies {
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
     implementation project(':submoon')
+    implementation project(':subearth')
 }
