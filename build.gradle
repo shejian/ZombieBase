@@ -27,8 +27,8 @@ dependencies {
     api 'com.yanzhenjie:permission:2.0.0-rc11'
     api deps.alibaba.arouter
     kapt deps.alibaba.arouter_compiler
-    api 'com.github.cd-butterfly:retrofit:1.0.1'
-    kapt 'com.github.cd-butterfly:retrofit-compiler:1.0.1'
+    api 'com.github.cd-butterfly:retrofit:1.0.4-SNAPSHOT'
+    kapt 'com.github.cd-butterfly:retrofit-compiler:1.0.4-SNAPSHOT'
     api deps.lifecycle.runtime
     api deps.lifecycle.extensions
     kapt deps.lifecycle.compiler
