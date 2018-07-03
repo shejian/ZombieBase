@@ -208,22 +208,9 @@ def setComponentsDefaultConfig = { extension ->
 }
 ext.componentsDefaultConfig = setComponentsDefaultConfig
 
-/**
- * react native 配置
- */
-def setReactNativeConfig = { project ->
-    def jsRoot = "$rootDir/appjs"
-    project.ext.react = [root: jsRoot,
-                         bundleAssetName: 'app.android.bundle',
-                         entryFile: 'index.js',
-                         bundleInRelease: true,
-                         resourcesDirRelease: 'src/main/res',
-//                     bundleCommand: 'unbundle',
-//                     extraPackagerArgs: ['--indexed-unbundle']
-    ]
-    apply from: "$jsRoot/node_modules/react-native/react.gradle"
-}
-ext.reactNativeConfig = setReactNativeConfig
+
+
+
 
 
 
