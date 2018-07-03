@@ -42,4 +42,5 @@ dependencies {
     androidTestImplementation deps.espresso.core
     implementation project(':submoon')
     implementation project(':subearth')
+    api project(':subrn')
 }
