@@ -32,7 +32,7 @@ public class RcycyleHelper {
             //刷新可用,分页的生活，关闭刷新
             mSwipeRefreshLayout.setEnabled(true);
             //设置刷新状态是未完成
-            mSwipeRefreshLayout.setRefreshing(true);
+            mSwipeRefreshLayout.setRefreshing(false);
 
         }
     }
