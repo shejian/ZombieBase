@@ -27,8 +27,8 @@ dependencies {
     api 'com.yanzhenjie:permission:2.0.0-rc11'
     api deps.alibaba.arouter
     kapt deps.alibaba.arouter_compiler
-    api 'com.github.cd-butterfly:retrofit:1.0.4-SNAPSHOT'
-    kapt 'com.github.cd-butterfly:retrofit-compiler:1.0.4-SNAPSHOT'
+    api deps.cd.retrofit
+    kapt deps.cd.retrofit_compiler
     api deps.lifecycle.runtime
     api deps.lifecycle.extensions
     kapt deps.lifecycle.compiler
@@ -37,9 +37,10 @@ dependencies {
     api deps.room.runtime
     api deps.room.guava
     api deps.paging
+    implementation project(':submoon')
+    implementation project(':subearth')
+
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
-    implementation project(':submoon')
-    implementation project(':subearth')
 }

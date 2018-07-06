@@ -18,7 +18,7 @@ import java.util.List;
  * 一个简单的通过databinding实现的recycleView 的Adapter
  * @see //com.taiwu.bigdata.ui.humman.IndexHRDbdActivity#onGetDimissionDbdList(LeaveTrendDbdResp)  调用案例
  */
-public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewDataBinding> extends RecyclerView.Adapter<DataBindingLiteHolder<E>> {
+public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewDataBinding,World > extends RecyclerView.Adapter<DataBindingLiteHolder<E>> {
 
     public interface DbdAdapterEvent<T extends BaseObservable, E extends ViewDataBinding> {
         /**

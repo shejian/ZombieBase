@@ -76,7 +76,7 @@ def setDependencies = { extension ->
     extension.kapt deps.kapt.databinding
     extension.kapt deps.lifecycle.compiler
     extension.kapt deps.alibaba.arouter_compiler
-    extension.kapt 'com.github.cd-butterfly:retrofit-compiler:1.0.4-SNAPSHOT'
+    extension.kapt deps.cd.retrofit_compiler
     extension.kapt deps.room.compiler
     extension.kapt deps.lifecycle.compiler
     extension.implementation deps.alibaba.arouter
@@ -130,7 +130,7 @@ def setDefLibDependencies = { extension ->
     extension.implementation extension.project(path: ':zombiebase')//所有业务模块Lib需要关联baselib
     extension.implementation 'com.spinytech.ma:macore:0.2.1'
     extension.kapt deps.alibaba.arouter_compiler
-    extension.kapt 'com.github.cd-butterfly:retrofit-compiler:1.0.4-SNAPSHOT'
+    extension.kapt deps.cd.retrofit_compiler
     extension.kapt deps.room.compiler
     extension.kapt deps.lifecycle.compiler
     extension.kapt deps.kapt.databinding
