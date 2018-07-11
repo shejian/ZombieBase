@@ -23,6 +23,8 @@ public class ZombieBaseUtils {
     public void getZombieLibraryInfo() {
 
         Log.d("shejian", BuildConfig.VERSION_NAME);
+        ARouter.openLog();
+        ARouter.openDebug();
 
     }
 
