@@ -6,8 +6,12 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,7 +22,7 @@ import java.util.List;
  * 一个简单的通过databinding实现的recycleView 的Adapter
  * @see //com.taiwu.bigdata.ui.humman.IndexHRDbdActivity#onGetDimissionDbdList(LeaveTrendDbdResp)  调用案例
  */
-public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewDataBinding,World > extends RecyclerView.Adapter<DataBindingLiteHolder<E>> {
+public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewDataBinding, World> extends RecyclerView.Adapter<DataBindingLiteHolder<E>> {
 
     public interface DbdAdapterEvent<T extends BaseObservable, E extends ViewDataBinding> {
         /**
@@ -29,6 +33,11 @@ public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewData
          * @param viewModel viewModel
          */
         void customSetItemView(DataBindingLiteHolder<E> holder, int position, T viewModel);
+    }
+
+    public interface OnItemClickListener {
+
+        void onItemClick(View view, int position);
     }
 
     private int layoutId;
@@ -60,7 +69,12 @@ public class DataBindingLiteAdapter<T extends BaseObservable, E extends ViewData
     public DataBindingLiteHolder<E> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //1.拿到itemView的viewDataBinding对象
         E viewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId, parent, false);
-        return new DataBindingLiteHolder<>(viewDataBinding);
+        return new DataBindingLiteHolder<>(viewDataBinding, new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Log.d("shejian", "onItemClick:"+position);
+            }
+        });
     }
 
     @Override
