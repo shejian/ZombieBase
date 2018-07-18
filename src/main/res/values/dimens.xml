@@ -95,4 +95,6 @@
     <dimen name="index_hot_second_width">195dp</dimen>
     <dimen name="index_hot_second_height">130dp</dimen>
 
+    <dimen name="grid_expected_size">120dp</dimen>
+
 </resources>

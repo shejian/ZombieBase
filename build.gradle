@@ -36,7 +36,10 @@ dependencies {
     kapt deps.room.compiler
     api deps.room.runtime
     api deps.room.guava
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
     api deps.paging
+    implementation deps.matisse
     implementation project(':submoon')
     implementation project(':subearth')
 
