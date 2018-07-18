@@ -1,6 +1,7 @@
 package com.avengers.zombiebase
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -28,7 +29,12 @@ abstract class BasePremissionActivity : AppCompatActivity() {
      * 如果需要增加权限的，请传递权限参数
      */
     open fun initPermission() {
-        requestPermission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+            toMainActivity()
+            finish()
+            return
+        }
+       /// requestPermission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
     }
 
 
