@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppAppCompatTheme" parent="AppAppCompatTheme21"></style>
+    <!--  B：fitsFALSE上下占用，无法设置颜色和字色，但内容需要人为加长titlebar高度和底部的paddingBottom高度，以避免被操作栏挡住 -->
+    <style name="AppAppCompatTheme.XXL" parent="AppAppCompatTheme21.XXL"></style>
+
+    <!-- 两种模式，A：fitsTRUE上下都不占用，可以设置底色 -->
+    <style name="AppAppCompatTheme21" parent="AppAppCompatTheme.fits.true">
+        <!-- 状态栏设置 -->
+        <item name="android:windowTranslucentStatus">true</item><!-- 状态栏是否透明，透明为true下面的设置无效 -->
+        <!-- 虚拟键栏设置 -->
+        <item name="android:windowTranslucentNavigation">false
+        </item><!-- 1.虚拟键是否透明，透明为true下面的设置无效，2.false不透明时fitsSystemWindows被强制为true不占用-->
+        <!--<item name="android:navigationBarColor">@color/black_10_color</item>&lt;!&ndash; 虚拟键底色 &ndash;&gt;-->
+        <item name="android:navigationMode">listMode</item><!-- 虚拟键模式 normal；listMode；tabMode -->
+        <!-- <item name="android:contentInsetStartWithNavigation">0dp</item>&lt;!&ndash; 内容插入以导航开始 &ndash;&gt;-->
+        <!-- transitions -->
+        <item name="android:windowContentTransitions">true</item><!-- 内容动画 -->
+        <!-- specify enter and exit transitions -->
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
+    </style>
+
+
+    <style name="AppAppCompatTheme21.XXL" parent="AppAppCompatTheme.fits.false">
+        <!-- 状态栏设置 -->
+        <item name="android:windowTranslucentStatus">false</item><!-- 状态栏是否透明，透明为true下面的设置无效 -->
+        <!-- 虚拟键栏设置 -->
+        <item name="android:windowTranslucentNavigation">true</item><!-- 1.虚拟键是否透明，透明为true下面的设置无效，2.false不透明时fitsSystemWindows被强制为true不占用-->
+        <item name="android:navigationMode">listMode</item><!-- 虚拟键模式 normal；listMode；tabMode -->
+        <!-- <item name="android:contentInsetStartWithNavigation">0dp</item>&lt;!&ndash; 内容插入以导航开始 &ndash;&gt;-->
+        <!-- transitions -->
+        <item name="android:windowContentTransitions">true</item><!-- 内容动画 -->
+        <!-- specify enter and exit transitions -->
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
+    </style>
+
+
+    <style name="ActionBtnBg">
+        <item name="android:background">@drawable/abc_action_bar_item_background_material</item>
+    </style>
+
+    <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownHorizontalOffset">-8dp</item>
+        <item name="android:dropDownVerticalOffset">0dp</item>
+        <item name="android:popupElevation">2dp</item>
+    </style>
+
+    <style name="CusCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+    </style>
+
+    <style name="PopupMenuEndStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <item name="overlapAnchor">true</item>
+        <item name="android:dropDownHorizontalOffset">-8dp</item>
+        <item name="android:dropDownVerticalOffset">8dp</item>
+        <item name="android:popupElevation">2dp</item>
+    </style>
+    <!--
+            参见styles_material 的Widget.Material.ListPopupWindow
+            <item name="dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+            <item name="popupBackground">@drawable/popup_background_material</item>
+            <item name="popupElevation">@dimen/floating_window_z</item>
+            <item name="popupAnimationStyle">@empty</item>
+            <item name="popupEnterTransition">@transition/popup_window_enter</item>
+            <item name="popupExitTransition">@transition/popup_window_exit</item>
+            <item name="dropDownVerticalOffset">0dip</item>
+            <item name="android:dropDownWidth">80dp</item>
+            <item name="dropDownHorizontalOffset">0dip</item>
+            -->
+
+
+</resources>

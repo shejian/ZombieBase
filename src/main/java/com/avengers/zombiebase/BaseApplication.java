@@ -7,6 +7,8 @@ public abstract class BaseApplication extends MaApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        DeviceUtil.initScreenParams(getResources());
+        MIUIUtil.INSTANCE.initMIUIInfo();
     }
 
 

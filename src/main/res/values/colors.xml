@@ -241,5 +241,6 @@
     <color name="color_estate_scatter2">#25CD1E</color>
     <color name="color_estate_scatter3">#2ECDCB</color>
     <color name="color_estate_scatter4">#666666</color>
+    <color name="colorPrimaryDark">#bb3a3a</color>
 
 </resources>

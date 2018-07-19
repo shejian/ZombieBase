@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewSwitcher
 import com.avengers.zombielibrary.R
+import android.view.WindowManager
+
 
 abstract class BaseActivity : AppCompatActivity() {
     private var haveData = false

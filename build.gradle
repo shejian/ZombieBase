@@ -5,6 +5,29 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+static def appendQuotes(tag) {
+    return "\"" + tag + "\""
+}
+
+def gitBranchName = 'unknown'
+def gitlog = 'unknown'
+task getGitBranchName {
+    gitlog = 'git log --pretty=format:%h,%cd,%ae -1'.execute().text.trim()
+    gitlog.indexOf("commit")
+    gitBranchName = 'git status'.execute([], project.rootDir).text.trim()
+    gitBranchName = gitBranchName.split("\\n")[0]
+    gitBranchName = gitBranchName.split(" ")[2]
+    if (gitBranchName.indexOf("/") >= 0) {
+        gitBranchName = gitBranchName.split("/")[1]
+    }
+}
+
+static def getRCDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd HH:mm:ss')
+    return formattedDate
+}
+
 android {
 
     defaultConfigw android
@@ -12,6 +35,10 @@ android {
     defaultConfig {
         versionCode 16
         versionName "0.00.1.6"
+
+        buildConfigField "String", "GIT_BRANCH", appendQuotes(gitBranchName)
+        buildConfigField "String", "GIT_LOG", appendQuotes(gitlog)
+        buildConfigField "String", "BUILD_TIME", appendQuotes(getRCDate())
     }
 
 }

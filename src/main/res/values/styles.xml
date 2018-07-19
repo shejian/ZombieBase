@@ -8,15 +8,36 @@
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/material_deep_orange_500</item>
 
-
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:clipToPadding">true</item>
         <item name="colorButtonNormal">@color/material_deep_orange_A700</item>
     </style>
 
+    <!-- 两种模式，A：fitsTRUE上下都不占用，可以设置底色 -->
+    <style name="AppAppCompatTheme.fits.true" parent="AppTheme">
+        <item name="android:fitsSystemWindows">true</item>
+        <!-- true：不占用状态栏和虚拟键位置，false：占用，windowTranslucentNavigation为false时导致fitsSystemWindows强制true -->
+        <!-- <item name="android:windowBackground">@color/window_background_color</item>-->
+        <item name="android:windowTitleSize">50dp</item>
+    </style>
+
+
+    <!--  B：fitsFALSE上下占用，无法设置颜色和字色，但内容需要人为加长titlebar高度和底部的paddingBottom高度，以避免被操作栏挡住 -->
+    <style name="AppAppCompatTheme.fits.false" parent="AppTheme">
+        <item name="android:fitsSystemWindows">false
+        </item><!-- true：不占用状态栏和虚拟键位置，false：占用，这样上下透明才有意义-->
+    <!--    <item name="android:windowBackground">@color/window_background_color</item>-->
+    </style>
+
+    <style name="AppAppCompatTheme" parent="AppAppCompatTheme.fits.true"></style>
+
+    <style name="AppAppCompatTheme.XXL" parent="AppAppCompatTheme.fits.false"></style>
+
+
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
