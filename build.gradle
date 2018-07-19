@@ -39,7 +39,7 @@ dependencies {
     implementation deps.glide.runtime
     kapt deps.glide.compiler
     api deps.paging
-    implementation deps.matisse
+    api deps.matisse
     implementation project(':submoon')
     implementation project(':subearth')
 

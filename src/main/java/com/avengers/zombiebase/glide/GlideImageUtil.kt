@@ -2,6 +2,7 @@ package com.avengers.zombiebase.glide
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.view.View
@@ -38,10 +39,13 @@ object GlideImageUtil {
         showImage(GlideApp.with(view),url,imageView,radius)
     }
 
+
     private fun showImage(glideRequests: GlideRequests,url: String,imageView: ImageView,radius: Int = 0) {
-        glideRequests.load(url)
-                .transform(RoundedCorners(radius))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+        var glideRequest = glideRequests.load(url)
+        if (radius != 0) {
+            glideRequest = glideRequest.transform(RoundedCorners(radius))
+        }
+        glideRequest.diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView)
     }
 
