@@ -132,7 +132,9 @@ deps.paging = "android.arch.paging:runtime:$versions.paging"
 def glide = [:]
 glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
 glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+glide.okhttp3  = "com.github.bumptech.glide:okhttp3-integration:$versions.glide"
 deps.glide = glide
+
 deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker"
 deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"

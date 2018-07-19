@@ -38,8 +38,10 @@ dependencies {
     api deps.room.guava
     implementation deps.glide.runtime
     kapt deps.glide.compiler
+    implementation deps.glide.okhttp3
     api deps.paging
     api deps.matisse
+
     implementation project(':submoon')
     implementation project(':subearth')
 
