@@ -10,7 +10,7 @@ import com.avengers.zombielibrary.R
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
 
-abstract class BasePremissionActivity : AppCompatActivity() {
+abstract class BasePermissionActivity : AppCompatActivity() {
 
     var toSet = false
 
@@ -51,8 +51,8 @@ abstract class BasePremissionActivity : AppCompatActivity() {
                     finish()
                 }
                 .onDenied { permissions ->
-                    if (AndPermission.hasAlwaysDeniedPermission(this@BasePremissionActivity, permissions)) {
-                        showSettingDialog(this@BasePremissionActivity, permissions)
+                    if (AndPermission.hasAlwaysDeniedPermission(this@BasePermissionActivity, permissions)) {
+                        showSettingDialog(this@BasePermissionActivity, permissions)
                     } else {
                         showDeniedDialog()
                     }
@@ -64,7 +64,7 @@ abstract class BasePremissionActivity : AppCompatActivity() {
      * 轻度拒绝后做提示
      */
     private fun showDeniedDialog() {
-        DialogBuilder.buildAlertDialog(this@BasePremissionActivity)
+        DialogBuilder.buildAlertDialog(this@BasePermissionActivity)
                 .setTitle("请授权")
                 .setMessage("需要一些权限才能正常使用App")
                 .setPositiveButton("继续") { _, _ ->
@@ -102,7 +102,7 @@ abstract class BasePremissionActivity : AppCompatActivity() {
         AndPermission.with(this)
                 .runtime()
                 .setting()
-                .onComeback { Toast.makeText(this@BasePremissionActivity, R.string.message_setting_comeback, Toast.LENGTH_SHORT).show() }
+                .onComeback { Toast.makeText(this@BasePermissionActivity, R.string.message_setting_comeback, Toast.LENGTH_SHORT).show() }
                 .start()
     }
 

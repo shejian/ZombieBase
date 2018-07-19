@@ -14,6 +14,8 @@
 
     <string name="message_error_storage">Please check the external storage device.</string>
 
+    <string name="error_gif">x or y bound size should be at least %1$dpx and file size should be no more than %2$sM</string>
+
     <string name="service_exception">服务器迷路啦，稍后再来哦</string>
 
 </resources>

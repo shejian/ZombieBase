@@ -12,22 +12,21 @@ import com.yanzhenjie.permission.Permission
  * 运行时权限的调用
  *
  */
-object RunTimePermission {
+object RuntimePermissionUtil {
 
-
-    fun requestPermission(context: Context, onSuccess: () -> Unit, vararg permissionss: String) {
+    fun requestPermission(context: Context, onSuccess: () -> Unit, vararg permissions: String) {
         AndPermission.with(context)
                 .runtime()
-                .permission(*permissionss)
+                .permission(*permissions)
                 .rationale(RuntimeRationale())
                 .onGranted {
                     onSuccess()
                 }
-                .onDenied { permissions ->
-                    if (AndPermission.hasAlwaysDeniedPermission(context, permissions)) {
-                        showSettingDialog(context, permissions)
+                .onDenied { permission ->
+                    if (AndPermission.hasAlwaysDeniedPermission(context, permission)) {
+                        showSettingDialog(context, permission)
                     } else {
-                        showDeniedDialog(context, onSuccess, *permissionss)
+                        showDeniedDialog(context, onSuccess, *permissions)
                     }
                 }.start()
     }
