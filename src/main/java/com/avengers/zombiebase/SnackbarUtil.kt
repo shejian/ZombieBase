@@ -11,8 +11,8 @@ import com.avengers.zombielibrary.R
 /**
  *
  *    SnackbarUtil.showActionLong(view,"我测试一下","撤销", {
-                 ToastOneUtil.showToastShort("已撤销")
-      }, Snackbar.LENGTH_INDEFINITE)
+ToastOneUtil.showToastShort("已撤销")
+}, Snackbar.LENGTH_INDEFINITE)
  *
  *    <dimen name="design_snackbar_elevation">0dp</dimen>
  *    控制了阴影大小
@@ -46,7 +46,7 @@ object SnackbarUtil {
         //设置按钮文字颜色
         snackBar.setActionTextColor(Color.GREEN)
                 //设置点击事件
-                .setAction("撤销") {
+                .setAction(actionStr) {
                     actionCallBack.invoke()
                     snackBar.dismiss()
                 }

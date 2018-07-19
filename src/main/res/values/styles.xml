@@ -10,14 +10,12 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:fitsSystemWindows">true</item>
-        <item name="android:clipToPadding">true</item>
         <item name="colorButtonNormal">@color/material_deep_orange_A700</item>
     </style>
 
     <!-- 两种模式，A：fitsTRUE上下都不占用，可以设置底色 -->
     <style name="AppAppCompatTheme.fits.true" parent="AppTheme">
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:fitsSystemWindows">false</item>
         <!-- true：不占用状态栏和虚拟键位置，false：占用，windowTranslucentNavigation为false时导致fitsSystemWindows强制true -->
         <!-- <item name="android:windowBackground">@color/window_background_color</item>-->
         <item name="android:windowTitleSize">50dp</item>
@@ -31,9 +29,7 @@
     <!--    <item name="android:windowBackground">@color/window_background_color</item>-->
     </style>
 
-    <style name="AppAppCompatTheme" parent="AppAppCompatTheme.fits.true"></style>
-
-    <style name="AppAppCompatTheme.XXL" parent="AppAppCompatTheme.fits.false"></style>
+    <style name="AppAppCompatTheme" parent="AppAppCompatTheme.fits.false"></style>
 
 
     <style name="AppTheme.NoActionBar">

@@ -6,7 +6,7 @@
     <style name="AppAppCompatTheme.XXL" parent="AppAppCompatTheme21.XXL"></style>
 
     <!-- 两种模式，A：fitsTRUE上下都不占用，可以设置底色 -->
-    <style name="AppAppCompatTheme21" parent="AppAppCompatTheme.fits.true">
+    <style name="AppAppCompatTheme21" parent="AppAppCompatTheme.fits.false">
         <!-- 状态栏设置 -->
         <item name="android:windowTranslucentStatus">true</item><!-- 状态栏是否透明，透明为true下面的设置无效 -->
         <!-- 虚拟键栏设置 -->
@@ -21,8 +21,10 @@
         <item name="android:windowEnterTransition">@android:transition/fade</item>
         <item name="android:windowExitTransition">@android:transition/fade</item>
         <!-- specify shared element transitions -->
-        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
-        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform
+        </item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform
+        </item>
     </style>
 
 
@@ -30,7 +32,8 @@
         <!-- 状态栏设置 -->
         <item name="android:windowTranslucentStatus">false</item><!-- 状态栏是否透明，透明为true下面的设置无效 -->
         <!-- 虚拟键栏设置 -->
-        <item name="android:windowTranslucentNavigation">true</item><!-- 1.虚拟键是否透明，透明为true下面的设置无效，2.false不透明时fitsSystemWindows被强制为true不占用-->
+        <item name="android:windowTranslucentNavigation">true
+        </item><!-- 1.虚拟键是否透明，透明为true下面的设置无效，2.false不透明时fitsSystemWindows被强制为true不占用-->
         <item name="android:navigationMode">listMode</item><!-- 虚拟键模式 normal；listMode；tabMode -->
         <!-- <item name="android:contentInsetStartWithNavigation">0dp</item>&lt;!&ndash; 内容插入以导航开始 &ndash;&gt;-->
         <!-- transitions -->
@@ -39,8 +42,10 @@
         <item name="android:windowEnterTransition">@android:transition/fade</item>
         <item name="android:windowExitTransition">@android:transition/fade</item>
         <!-- specify shared element transitions -->
-        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
-        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform
+        </item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform
+        </item>
     </style>
 
 
@@ -55,8 +60,7 @@
         <item name="android:popupElevation">2dp</item>
     </style>
 
-    <style name="CusCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
-    </style>
+    <style name="CusCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox"></style>
 
     <style name="PopupMenuEndStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
         <item name="overlapAnchor">true</item>
