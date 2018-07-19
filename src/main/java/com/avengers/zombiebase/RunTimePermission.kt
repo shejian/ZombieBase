@@ -7,7 +7,13 @@ import com.avengers.zombielibrary.R
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
 
+/**
+ * @author Jervis
+ * 运行时权限的调用
+ *
+ */
 object RunTimePermission {
+
 
     fun requestPermission(context: Context, onSuccess: () -> Unit, vararg permissionss: String) {
         AndPermission.with(context)

@@ -31,7 +31,6 @@ public abstract class DialogBuilder {
     }
 
 
-
     /**
      * “我知道了” 并不能被取消
      *
@@ -217,6 +216,7 @@ public abstract class DialogBuilder {
 
     /**
      * 列表单选必备弹窗
+     *
      * @param mContext
      * @param titleStr
      * @param roomTitle

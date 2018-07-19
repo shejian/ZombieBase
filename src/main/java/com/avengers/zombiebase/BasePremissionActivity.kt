@@ -19,7 +19,6 @@ abstract class BasePremissionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initPermission()
-
     }
 
 
@@ -34,7 +33,7 @@ abstract class BasePremissionActivity : AppCompatActivity() {
             finish()
             return
         }
-       /// requestPermission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+        requestPermission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
     }
 
 

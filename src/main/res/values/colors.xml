@@ -26,14 +26,14 @@
     <!-- 字体颜色浅灰 -->
     <!-- 字体绿 -->
     <color name="textGreen2">#00aa82</color>
-    <!-- 主色调(太屋为红色) -->
+    <!-- 主色调 -->
     <color name="mainColor">#FA3B3B</color>
     <color name="mainColorMt">#f44336</color>
     <color name="mainColor_new">#FA3B3B</color>
     <color name="color_orange_ff8833">#ff8833</color>
     <!--蓝色-->
     <color name="blue">#3399ff</color>
-    <!-- 淡蓝色 (与巧房同名，且太屋数据未使用 注释)-->
+    <!-- 淡蓝色 -->
     <!--<color name="light_blue">#99ccff</color>-->
     <!-- 线的颜色 -->
     <color name="line">#b4b4b4</color>
