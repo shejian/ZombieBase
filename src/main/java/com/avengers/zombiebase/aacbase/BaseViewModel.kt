@@ -1,7 +1,8 @@
-package com.avengers.zombiebase.accbase
+package com.avengers.zombiebase.aacbase
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations.*
+import android.arch.lifecycle.Transformations.map
+import android.arch.lifecycle.Transformations.switchMap
 import android.arch.lifecycle.ViewModel
 
 /**
@@ -15,11 +16,11 @@ import android.arch.lifecycle.ViewModel
  * netWorkState ：网络状态
  * refresh() ：对外提供的刷新重试函数
  */
-open class BaseVM<K : IReqParam, T : IBeanResponse>(private val repository: AbsRepository<T>) : ViewModel() {
+open class BaseViewModel<K : IReqParam,T : IBeanResponse>(private val repository: Repository<K,T>) : ViewModel() {
 
-    val queryParam = MutableLiveData<K>()
+    private val queryParam = MutableLiveData<K>()
 
-    private val result = map(queryParam) { repository.assemblyVMResult(it) }
+    private val result = map(queryParam) { repository.assembleResult(it) }
 
     val liveData = switchMap(result) { it.data }!!
 
@@ -27,6 +28,10 @@ open class BaseVM<K : IReqParam, T : IBeanResponse>(private val repository: AbsR
 
     fun refresh() {
         result.value?.refresh?.invoke()
+    }
+
+    fun request(value: K) {
+        queryParam.postValue(value)
     }
 
 

@@ -1,4 +1,4 @@
-package com.avengers.zombiebase.accbase
+package com.avengers.zombiebase.aacbase
 
 enum class Status {
     RUNNING,
