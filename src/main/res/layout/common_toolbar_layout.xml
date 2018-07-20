@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.avengers.zombiebase.widget.CustomToolBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:title="Title"
+        app:titleTextAppearance="?android:attr/textAppearanceMedium"
+        app:titleTextColor="@color/black_87_color">
+
+        <TextView
+            android:id="@+id/center_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black_87_color" />
+
+    </com.avengers.zombiebase.widget.CustomToolBar>
+
+
+</layout>
+

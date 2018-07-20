@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_4">4dp</dimen>
@@ -96,5 +96,8 @@
     <dimen name="index_hot_second_height">130dp</dimen>
 
     <dimen name="grid_expected_size">120dp</dimen>
+
+
+    <dimen name="abc_action_bar_content_inset_with_nav" tools:override="true">0dp</dimen>
 
 </resources>

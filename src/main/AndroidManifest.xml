@@ -36,7 +36,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application>
+    <application android:theme="@style/AppAppCompatTheme">
         <meta-data
             android:name="android.max_aspect"
             android:value="ratio_float" />
