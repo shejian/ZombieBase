@@ -15,19 +15,7 @@
         app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
         app:title="Title"
         app:titleTextAppearance="?android:attr/textAppearanceMedium"
-        app:titleTextColor="@color/black_87_color">
-
-        <TextView
-            android:id="@+id/center_title_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/black_87_color" />
-
-    </com.avengers.zombiebase.widget.CustomToolBar>
-
+        app:titleTextColor="@color/black_87_color" />
 
 </layout>
 
