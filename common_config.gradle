@@ -91,6 +91,8 @@ def setDependencies = { extension ->
     extension.testImplementation deps.junit
     extension.androidTestImplementation deps.atsl.runner
     extension.androidTestImplementation deps.espresso.core
+    extension.kapt deps.bugly.crash_report_compiler
+    extension.kapt deps.bugly.tinker_compiler
 }
 
 ext.dds = setDependencies

@@ -68,6 +68,8 @@ dependencies {
     implementation deps.glide.okhttp3
     api deps.paging
     api deps.matisse
+    api deps.bugly.crash_report_compiler
+    api deps.bugly.tinker_compiler
 
     implementation project(':submoon')
     implementation project(':subearth')

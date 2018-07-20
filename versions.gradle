@@ -56,6 +56,9 @@ versions.arouter_compiler = "1.1.4"
 versions.arouter_api = "1.1.0"
 versions.cd_retrofit = "1.0.4-SNAPSHOT"
 versions.cd_retrofit_compiler = "1.0.4-SNAPSHOT"
+versions.bugly = "1.3.5"
+versions.bugly_crashreport = "1.3.5"
+versions.bugly_tinker = "1.9.6"
 def deps = [:]
 
 def support = [:]
@@ -183,6 +186,11 @@ deps.cd = cd
 def kaptext = [:]
 kaptext.databinding = "com.android.databinding:compiler:$versions.databinding"
 deps.kapt = kaptext
+
+def bugly = [:]
+bugly.crash_report_compiler = "com.tencent.bugly:crashreport_upgrade:$versions.bugly_crashreport"
+bugly.tinker_compiler = "com.tencent.tinker:tinker-android-lib:$versions.bugly_tinker"
+deps.bugly = bugly
 
 static def addRepos(RepositoryHandler handler) {
     handler.google()
