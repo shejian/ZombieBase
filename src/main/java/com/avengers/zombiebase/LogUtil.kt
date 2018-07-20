@@ -10,6 +10,7 @@ object LogU {
     private val isDebug = BuildConfig.DEBUG
 
     fun v(msg: String) {
+        Log.d("shejian", "123456")
         v(DEFAULT_TAG, msg)
     }
 
