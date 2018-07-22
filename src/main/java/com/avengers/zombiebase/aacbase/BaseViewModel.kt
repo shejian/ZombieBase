@@ -7,7 +7,7 @@ import android.arch.lifecycle.ViewModel
 
 /**
  * @author Jervis
- * @data 2018-07-17
+ * @date 2018-07-17
  * ViewModel的一个基础类，给他已经强制定义了一些网络请求发生后必须要使用的一些基础函数和对象，复杂业务需要自行继承并扩展
  * 说明如下
  * queryParam ：请求条件参数

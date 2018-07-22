@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 
 /**
  * @author Jervis
- * @data 2018-07-17
+ * @date 2018-07-17
  * Repository作用的抽象类
  * haveCache 默认具备缓存能力
  * assembleResult 是一切的开始，它负责组装驱动所有事件发生的关键对数据对象
