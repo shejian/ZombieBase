@@ -13,15 +13,14 @@ import android.widget.ListView
  */
 class DataBindingLiteHolder<E : ViewDataBinding>(
         var binding: E,
-        private var itemClick: DataBindingLiteAdapter.OnItemClickListener
+        var onItemClickFun: ((view: View, position: Int) -> Unit?)? = null
 ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     init {
         binding.root.setOnClickListener(this)
     }
 
-
-    override fun onClick(v: View?) {
-        itemClick.onItemClick(v, this.adapterPosition)
+    override fun onClick(v: View) {
+        onItemClickFun?.invoke(v, this.adapterPosition)
     }
 }

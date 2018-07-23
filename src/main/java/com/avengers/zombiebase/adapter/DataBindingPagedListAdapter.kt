@@ -7,9 +7,7 @@ import android.support.v7.util.DiffUtil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.avengers.zombiebase.LogU
 import com.avengers.zombiebase.aacbase.NetworkState
-import com.avengers.zombiebase.adapter.DataBindingLiteAdapter.OnItemClickListener
 import com.avengers.zombielibrary.BR
 import com.avengers.zombielibrary.R
 import com.avengers.zombielibrary.databinding.NetworkStateItemBinding
@@ -24,37 +22,37 @@ import com.avengers.zombielibrary.databinding.NetworkStateItemBinding
  * 4.提供了item点击事件的闭包函数
  *
  */
-open class BasePagedListAdapter<T>(private val view_item_layout: Int,
-                                   private val brId: Int,
-                                   diffCallback: DiffUtil.ItemCallback<T>,
-                                   private var onBindView: ((view: ViewDataBinding, sd: Int) -> Unit?)? = null
-) : PagedListAdapter<T, DataBindingLiteHolder<ViewDataBinding>>(diffCallback) {
+open class DataBindingPagedListAdapter<T>(
+        private val view_item_layout: Int,
+        private val brId: Int,
+        diffCallback: DiffUtil.ItemCallback<T>,
+        private var onBindView: ((view: ViewDataBinding, sd: Int) -> Unit?)? = null)
+    : PagedListAdapter<T, DataBindingLiteHolder<ViewDataBinding>>(diffCallback) {
 
-    var onItemClickFun: ((view: View, sd: Int) -> Unit?)? = null
+    var onItemClickFun: ((view: View, position: Int) -> Unit?)? = null
+
+    var onRetryFun: ((view: View, position: Int) -> Unit?)? = null
 
     private var networkState: NetworkState = NetworkState.error("")
 
     private fun hasExtraRow() = networkState != NetworkState.LOADED
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingLiteHolder<ViewDataBinding> {
+
         //1.拿到itemView的viewDataBinding对象
         return when (viewType) {
             NETWORK_ITEM_LAYOUT -> {
                 val networkStateDataBinding = DataBindingUtil.inflate<NetworkStateItemBinding>(LayoutInflater.from(parent.context), NETWORK_ITEM_LAYOUT, parent, false)
                 DataBindingLiteHolder(
                         networkStateDataBinding,
-                        OnItemClickListener { _: View, _: Int ->
-                            LogU.d("重试")
-                        })
+                        onRetryFun
+                )
             }
-        //view_item_layout ->
-            else -> {
+            else -> {//view_item_layout ->
                 val viewDataBinding = DataBindingUtil.inflate<ViewDataBinding>(LayoutInflater.from(parent.context), view_item_layout, parent, false)
                 DataBindingLiteHolder(
                         viewDataBinding,
-                        OnItemClickListener { view: View, position: Int ->
-                            onItemClickFun.let { onItemClickFun?.invoke(view, position) }
-                        })
+                        onItemClickFun)
             }
         }
     }
@@ -62,18 +60,15 @@ open class BasePagedListAdapter<T>(private val view_item_layout: Int,
     override fun onBindViewHolder(holder: DataBindingLiteHolder<ViewDataBinding>, position: Int) {
         val binding = holder.binding
         //2.为viewDataBinding对象设置XML中的数据属性
-        var layoutId = getItemViewType(position)
+        val layoutId = getItemViewType(position)
         binding.setVariable(switchVariableId(layoutId), switchValue(layoutId, position))
 
         if (layoutId == view_item_layout) {
-            onBindView.let {
-                //闭包实现 onBindView
-                onBindView?.invoke(binding, position)
-            }
+            //闭包实现 onBindView
+            onBindView.let { it?.invoke(binding, position) }
             onBindView(holder, position)
         }
-
-        //3.据说时为了解决使用dataBinding导致RecycleView 的闪烁问题
+        //3.为了解决使用dataBinding导致RecycleView的闪烁问题
         binding.executePendingBindings()
     }
 
@@ -129,7 +124,6 @@ open class BasePagedListAdapter<T>(private val view_item_layout: Int,
 
     companion object {
         val NETWORK_ITEM_LAYOUT = R.layout.network_state_item
-
     }
 }
 
