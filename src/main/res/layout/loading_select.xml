@@ -11,7 +11,7 @@
         android:clickable="true">
 
         <include
-            layout="@layout/comm_progress_l"
+            layout="@layout/load_progress"
             android:layout_width="48dip"
             android:layout_height="48dip"
             android:layout_gravity="center"
