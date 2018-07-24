@@ -34,16 +34,19 @@ def setDefaultConfig = { android ->
 
         debug {
             minifyEnabled false
+            matchingFallbacks = ['debug', 'release']
             proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         beta {
             minifyEnabled false
+            matchingFallbacks = ['debug', 'release']
             proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         release {
             minifyEnabled true
+            matchingFallbacks = ['debug', 'release']
             proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -222,6 +225,7 @@ def setReactNativeConfig = { project ->
 //                     extraPackagerArgs: ['--indexed-unbundle']
     ]
     apply from: "$jsRoot/node_modules/react-native/react.gradle"
+    apply from: "$jsRoot/node_modules/react-native-code-push/android/codepush.gradle"
 }
 ext.reactNativeConfig = setReactNativeConfig
 
