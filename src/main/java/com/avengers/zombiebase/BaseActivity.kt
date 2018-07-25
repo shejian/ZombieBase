@@ -8,18 +8,18 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewSwitcher
+import com.avengers.zombiebase.ui.LaeView
 import com.avengers.zombielibrary.R
-import android.view.WindowManager
 
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(),LaeView {
     private var haveData = false
     private var view: View? = null
     private var myContentView: View? = null
     private var loadView: ViewSwitcher? = null
     private var errorSwitchLayout: ViewSwitcher? = null
 
-    abstract fun reloadData()
+    abstract override fun reloadData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 加载界面
      */
-    fun showLoadView() {
+    override fun showLoadView() {
         if (haveData) {
             return
         }
@@ -42,7 +42,7 @@ abstract class BaseActivity : AppCompatActivity() {
         loadView!!.setBackgroundResource(android.R.color.white)
     }
 
-    fun showLoadTransView() {
+    override fun showLoadTransView() {
         if (!initErrorLayout()) {
             return
         }
@@ -55,7 +55,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 初始化异常处理界面
      */
-    fun initErrorLayout(): Boolean {
+    override fun initErrorLayout(): Boolean {
         if (errorSwitchLayout == null) {
             val frameLayout = view as FrameLayout ?: return false
             myContentView = frameLayout.getChildAt(0)
@@ -73,7 +73,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 显示业务主界面
      */
-    fun showContentView() {
+    override fun showContentView() {
         if (errorSwitchLayout == null) {
             return
         }
@@ -87,7 +87,7 @@ abstract class BaseActivity : AppCompatActivity() {
      *
      * @param errorInfo
      */
-    fun showErrorView(errorInfo: String) {
+    override fun showErrorView(errorInfo: String) {
         var errorInfo = errorInfo
         if (!initErrorLayout()) {
             return
