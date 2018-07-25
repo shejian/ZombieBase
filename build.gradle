@@ -41,6 +41,12 @@ android {
         buildConfigField "String", "BUILD_TIME", appendQuotes(getRCDate())
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
 }
 
 dependencies {
@@ -77,4 +83,6 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
+
+    compile files('libs/BaiduLBS_Android.jar')
 }
