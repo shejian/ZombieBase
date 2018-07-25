@@ -5,6 +5,10 @@ import android.arch.lifecycle.MutableLiveData
 import com.avengers.zombiebase.aacbase.NetworkState
 import com.avengers.zombiebase.aacbase.paging.PagingRequestHelper
 
+/**
+ * PagingReqHelp扩展类
+ *
+ */
 
 private fun getErrorMessage(report: PagingRequestHelper.StatusReport): String {
     return PagingRequestHelper.RequestType.values().mapNotNull {

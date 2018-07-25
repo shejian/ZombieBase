@@ -114,7 +114,7 @@ open class DataBindingPagedListAdapter<T>(
                 //  notifyItemRemoved(super.getItemCount())
             } else {
                 //增加插入动画
-                notifyItemInserted(super.getItemCount())
+               // notifyItemInserted(super.getItemCount())
             }
         } else if (hasExtraRow && previousState != newNetworkState) {
             //使用livedata的情况下不用手动刷新
