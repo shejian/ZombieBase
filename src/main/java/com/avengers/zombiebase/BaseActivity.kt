@@ -36,9 +36,9 @@ abstract class BaseActivity : AppCompatActivity(),LaeView {
         if (!initErrorLayout()) {
             return
         }
-        errorSwitchLayout!!.setVisibility(View.VISIBLE)
-        errorSwitchLayout!!.setDisplayedChild(0)
-        loadView!!.setDisplayedChild(0)
+        errorSwitchLayout!!.visibility = View.VISIBLE
+        errorSwitchLayout!!.displayedChild = 0
+        loadView!!.displayedChild = 0
         loadView!!.setBackgroundResource(android.R.color.white)
     }
 
@@ -46,9 +46,9 @@ abstract class BaseActivity : AppCompatActivity(),LaeView {
         if (!initErrorLayout()) {
             return
         }
-        errorSwitchLayout!!.setVisibility(View.VISIBLE)
-        errorSwitchLayout!!.setDisplayedChild(0)
-        loadView!!.setDisplayedChild(0)
+        errorSwitchLayout!!.visibility = View.VISIBLE
+        errorSwitchLayout!!.displayedChild = 0
+        loadView!!.displayedChild = 0
         loadView!!.setBackgroundResource(android.R.color.transparent)
     }
 
@@ -62,9 +62,9 @@ abstract class BaseActivity : AppCompatActivity(),LaeView {
             errorSwitchLayout = View.inflate(this, R.layout.loading_select, null) as ViewSwitcher
 
             frameLayout.addView(errorSwitchLayout)
-            val topViewHeight = getResources().getDimensionPixelOffset(R.dimen.dp_48)
+            val topViewHeight = resources.getDimensionPixelOffset(R.dimen.dp_48)
             errorSwitchLayout!!.setPadding(0, topViewHeight, 0, 0)
-            //    errorSwitchLayout.setPadding(0, _48dp, 0, 0);
+            //errorSwitchLayout.setPadding(0, _48dp, 0, 0);
             loadView = errorSwitchLayout!!.findViewById(R.id.loading_viewswitch)
         }
         return true
@@ -78,17 +78,17 @@ abstract class BaseActivity : AppCompatActivity(),LaeView {
             return
         }
         haveData = true
-        errorSwitchLayout!!.setVisibility(View.GONE)
-        myContentView!!.setVisibility(View.VISIBLE)
+        errorSwitchLayout!!.visibility = View.GONE
+        myContentView!!.visibility = View.VISIBLE
     }
 
     /**
      * 请求失败，显示请求错误界面
      *
-     * @param errorInfo
+     * @param error
      */
-    override fun showErrorView(errorInfo: String) {
-        var errorInfo = errorInfo
+    override fun showErrorView(error: String) {
+        var errorInfo = error
         if (!initErrorLayout()) {
             return
         }
@@ -96,26 +96,26 @@ abstract class BaseActivity : AppCompatActivity(),LaeView {
             return
         }
         if (haveData) {
-//            ToastUtil.showInBottom(getActivity(), errorInfo)
-            errorSwitchLayout!!.setVisibility(View.GONE)
-            myContentView!!.setVisibility(View.VISIBLE)
+            //ToastUtil.showInBottom(getActivity(), errorInfo)
+            errorSwitchLayout!!.visibility = View.GONE
+            myContentView!!.visibility = View.VISIBLE
         } else {
-            errorSwitchLayout!!.setVisibility(View.VISIBLE)
-            var errorViewSwitch: ViewSwitcher = errorSwitchLayout!!.findViewById(R.id.error_viewswitch)
+            errorSwitchLayout!!.visibility = View.VISIBLE
+            val errorViewSwitch: ViewSwitcher = errorSwitchLayout!!.findViewById(R.id.error_viewswitch)
             (loadView!!.findViewById(R.id.error_text) as TextView).text = errorInfo
             val imageView: ImageView = loadView!!.findViewById(R.id.error_img)
             imageView.setImageResource(R.drawable.no_internet)
             if (TextUtils.isEmpty(errorInfo)) {
-                errorInfo = loadView!!.getResources().getString(R.string.service_exception)
+                errorInfo = loadView!!.resources.getString(R.string.service_exception)
             }
             (loadView!!.findViewById(R.id.error_text) as TextView).text = errorInfo
-            var errorBtn: View = loadView!!.findViewById(R.id.error_btn)
-            errorBtn!!.setOnClickListener { view ->
+            val errorBtn: View = loadView!!.findViewById(R.id.error_btn)
+            errorBtn.setOnClickListener {
                 reloadData()
             }
-            errorSwitchLayout!!.setDisplayedChild(0)
-            loadView!!.setDisplayedChild(1)
-            errorViewSwitch.setDisplayedChild(0)
+            errorSwitchLayout!!.displayedChild = 0
+            loadView!!.displayedChild = 1
+            errorViewSwitch.displayedChild = 0
         }
     }
 
