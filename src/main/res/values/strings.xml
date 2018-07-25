@@ -18,4 +18,10 @@
 
     <string name="service_exception">服务器迷路啦，稍后再来哦</string>
 
+    <string name="lib_name">PatternLockView</string>
+    <string name="message_pattern_dot_added">Dot added to pattern</string>
+    <string name="message_pattern_started">Pattern drawing started</string>
+    <string name="message_pattern_detected">Pattern drawing completed</string>
+    <string name="message_pattern_cleared">Pattern cleared</string>
+
 </resources>
