@@ -18,7 +18,7 @@ import com.avengers.zombiebase.aacbase.NetworkState
  * 最低颗粒度的情况下包含：一个请求回来的结果，一个请求状态，一个重试或者叫刷新的函数对象
  *
  */
-abstract class PageListRepository<V : IReqParam, T : IBeanResponse>(
+abstract class PagedListRepository<V : IReqParam, T : IBeanResponse>(
         private var haveCache: Boolean = true) {
 
     companion object {

@@ -20,7 +20,9 @@ open class BaseViewModel<K : IReqParam,T : IBeanResponse>(private val repository
 
     private val queryParam = MutableLiveData<K>()
 
-    private val result = map(queryParam) { repository.assembleResult(it) }
+    private val result = map(queryParam) {
+        repository.assembleResult(it)
+    }
 
     val liveData = switchMap(result) { it.data }!!
 
