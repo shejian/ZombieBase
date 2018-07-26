@@ -31,12 +31,18 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : ViewModel, P : Repositor
     lateinit var mDataBinding: B
 
 
+    lateinit var sViewHelper: StatusViewHelper
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         aacHelp = AACBaseHelp(this, this)
         genericViewModelClassToInit(inflater, container)
+        sViewHelper = StatusViewHelper(LayoutInflater.from(context), container)
+        (mDataBinding.root as ViewGroup).addView(sViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         return mDataBinding.root
     }
+
 
     private fun genericViewModelClassToInit(inflater: LayoutInflater, container: ViewGroup?) {
         val modelClass: Class<V>
@@ -46,7 +52,7 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : ViewModel, P : Repositor
             @Suppress("UNCHECKED_CAST")
             modelClass = params[1] as Class<V>
 
-           // mViewModel = aacHelp.createViewModel(this.activity!!, modelClass) //这样能创建Activity范围可共享的ViewModel
+            // mViewModel = aacHelp.createViewModel(this.activity!!, modelClass) //这样能创建Activity范围可共享的ViewModel
             mViewModel = aacHelp.createViewModel(modelClass)
             mDataBinding = aacHelp.getDataBinding(inflater, container).apply {
                 setLifecycleOwner(this@AACBaseFragment)

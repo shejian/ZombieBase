@@ -12,6 +12,7 @@
         <item name="actionBarSize">48dp</item>
         <item name="windowNoTitle">true</item>
         <item name="colorButtonNormal">@color/material_deep_orange_A700</item>
+        <item name="android:buttonStyle">?android:attr/borderlessButtonStyle</item>
     </style>
 
     <!-- 两种模式，A：fitsTRUE上下都不占用，可以设置底色 -->
