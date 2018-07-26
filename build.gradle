@@ -84,5 +84,5 @@ dependencies {
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
 
-    compile files('libs/BaiduLBS_Android.jar')
+    api files('libs/BaiduLBS_Android.jar')
 }
