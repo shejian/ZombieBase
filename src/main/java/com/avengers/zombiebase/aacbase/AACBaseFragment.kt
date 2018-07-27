@@ -1,6 +1,5 @@
 package com.avengers.zombiebase.aacbase
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.databinding.ViewDataBinding
@@ -24,8 +23,6 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*, *>, P :
     abstract override val layout: Int
 
     abstract override fun createRepository(): P
-
-    //  abstract override fun createModelPageListRepositoryFactory(repository: P): ViewModelProvider.Factory
 
     private lateinit var aacHelp: AACBaseHelp<B, V, P>
 
@@ -56,31 +53,16 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*, *>, P :
         }
     }
 
-    /*
-       通过设置NetworkState，动态改变界面的状态
-       fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
-           if (haveLocalData && Status.FAILED == ns.status) {
-               statusViewHelper.setNs(NetworkState.LOADED)
-               SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
-                   mViewModel.refresh()
-               }, Snackbar.LENGTH_LONG)
-           } else {
-               statusViewHelper.setNs(ns)
-           }
-       }*/
-
 
     /**
      * 通过设置NetworkState
      */
-    fun settingStatusView(ns: NetworkState) {
-        if (Status.CACHED_FAILED == ns.status) {
-            statusViewHelper.setNs(NetworkState.LOADED)
-            SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
+    fun settingStatusView(networkState: NetworkState) {
+        statusViewHelper.setNetworkState(networkState)
+        if (Status.CACHED_FAILED == networkState.status) {
+            SnackbarUtil.showActionLong(mDataBinding.root,"数据获取失败","点击重试",{
                 mViewModel.refresh()
-            }, Snackbar.LENGTH_LONG)
-        } else {
-            statusViewHelper.setNs(ns)
+            },Snackbar.LENGTH_LONG)
         }
     }
 

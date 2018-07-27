@@ -31,12 +31,8 @@
 
 package com.avengers.zombiebase.bindinghelp
 
-import android.databinding.BindingAdapter
 import android.databinding.BindingConversion
-import android.support.design.widget.Snackbar
 import android.view.View
-import android.widget.RelativeLayout
-import com.avengers.zombiebase.SnackbarUtil
 
 /**
  * In order to show a View only when it has more than 0 likes, we pass this expression to its
@@ -65,8 +61,8 @@ object BindingConverters {
 
     @BindingConversion
     @JvmStatic
-    fun booleanToVisibility(isNotVisible: Boolean): Int {
-        return if (isNotVisible) View.GONE else View.VISIBLE
+    fun booleanToVisibility(visible: Boolean): Int {
+        return if (visible) View.VISIBLE else View.GONE
     }
 }
 

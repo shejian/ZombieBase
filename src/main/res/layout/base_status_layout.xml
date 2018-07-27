@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <import
             alias="Status"
             type="com.avengers.zombiebase.aacbase.Status" />
 
         <variable
-            name="ns"
+            name="state"
             type="com.avengers.zombiebase.aacbase.NetworkState" />
 
         <variable
@@ -17,7 +16,6 @@
             type="com.avengers.zombiebase.aacbase.StatusViewHelper.HandlerClick" />
 
     </data>
-    <!--   android:clickable="@{ns.status==Status.FAILED}"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,14 +23,31 @@
         android:clickable="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="@{ns.status==Status.SUCCESS}"
-        >
+        android:visibility="@{state.status != Status.SUCCESS || state.status != Status.CACHED_FAILED}"
+        android:focusable="true">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:visibility="@{ns.status!=Status.FAILED}" />
+            android:visibility="@{state.status == Status.FAILED}" />
+
+        <FrameLayout
+            android:background="@color/white"
+            android:visibility="@{state.status == Status.EMPTY}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_16"
+                android:text="@{state.msg}"
+                android:textColor="@color/material_blue_500"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,30 +55,24 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/error_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{ns.msg}"
+                android:text="@{state.msg}"
                 android:visibility="gone" />
-
-            <!-- android:visibility="@{ns.status!=Status.FAILED}"-->
-
 
             <com.avengers.zombiebase.widget.ProgressWheel
                 android:id="@+id/progress_bar"
                 android:layout_width="48dip"
                 android:layout_height="48dip"
                 android:layout_gravity="center"
-                android:visibility="@{ns.status!=Status.RUNNING}"
+                android:visibility="@{state.status == Status.RUNNING}"
                 app:matProg_barColor="@color/black_54_color"
                 app:matProg_barWidth="4dp"
                 app:matProg_progressIndeterminate="true" />
 
-
-            <!--     style="@style/Widget.AppCompat.Button.Colored"-->
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/retry_button"
                 android:layout_width="wrap_content"
@@ -76,7 +85,7 @@
                 android:textColor="@color/material_blue_500"
                 android:textSize="14dp"
                 android:textStyle="bold"
-                android:visibility="@{ns.status!=Status.FAILED}" />
+                android:visibility="@{state.status == Status.FAILED}" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

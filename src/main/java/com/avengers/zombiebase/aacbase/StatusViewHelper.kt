@@ -32,8 +32,8 @@ class StatusViewHelper(val factory: LayoutInflater, var container: ViewGroup?) {
     }
 
 
-    fun setNs(state: NetworkState) {
-        baseStatusLayoutBinding?.ns = state
+    fun setNetworkState(state: NetworkState) {
+        baseStatusLayoutBinding?.state = state
     }
 
     inner class HandlerClick {
