@@ -83,5 +83,8 @@ abstract class Repository<V : IReqParam,T : IBeanResponse>(private val executor:
         return null
     }
 
+    fun haveData(): Boolean {
+        return dataSource.value != null
+    }
 
 }

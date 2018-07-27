@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType
  * @author Jervis
  * @date 20180726
  */
-abstract class AACBaseFragment<B : ViewDataBinding, V : ViewModel, P : Repository<*, *>>
+abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*,*>, P : Repository<*, *>>
     : Fragment(), AACBaseHelp.IAACHelp<P> {
 
     abstract override val layout: Int
