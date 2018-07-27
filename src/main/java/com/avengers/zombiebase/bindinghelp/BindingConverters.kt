@@ -31,8 +31,12 @@
 
 package com.avengers.zombiebase.bindinghelp
 
+import android.databinding.BindingAdapter
 import android.databinding.BindingConversion
+import android.support.design.widget.Snackbar
 import android.view.View
+import android.widget.RelativeLayout
+import com.avengers.zombiebase.SnackbarUtil
 
 /**
  * In order to show a View only when it has more than 0 likes, we pass this expression to its

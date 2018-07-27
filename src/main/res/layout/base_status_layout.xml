@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -25,7 +25,8 @@
         android:clickable="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="@{ns.status==Status.SUCCESS}">
+        android:visibility="@{ns.status==Status.SUCCESS}"
+        >
 
         <View
             android:layout_width="match_parent"
@@ -57,9 +58,9 @@
                 android:layout_height="48dip"
                 android:layout_gravity="center"
                 android:visibility="@{ns.status!=Status.RUNNING}"
-                wheel:matProg_barColor="@color/black_54_color"
-                wheel:matProg_barWidth="4dp"
-                wheel:matProg_progressIndeterminate="true" />
+                app:matProg_barColor="@color/black_54_color"
+                app:matProg_barWidth="4dp"
+                app:matProg_progressIndeterminate="true" />
 
 
             <!--     style="@style/Widget.AppCompat.Button.Colored"-->

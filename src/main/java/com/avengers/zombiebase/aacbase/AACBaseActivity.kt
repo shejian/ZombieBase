@@ -4,10 +4,11 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import com.avengers.zombiebase.SnackbarUtil
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -15,7 +16,7 @@ import java.lang.reflect.ParameterizedType
  * @author Jervis
  * @date 20180726
  */
-abstract class AACBaseActivity<B : ViewDataBinding, V : ViewModel, P : Repository<*, *>>
+abstract class AACBaseActivity<B : ViewDataBinding, V : BaseViewModel<*, *>, P : Repository<*, *>>
     : AppCompatActivity(), AACBaseHelp.IAACHelp<P> {
 
     abstract override val layout: Int
@@ -32,21 +33,38 @@ abstract class AACBaseActivity<B : ViewDataBinding, V : ViewModel, P : Repositor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         aacHelp = AACBaseHelp(this, this)
         genericViewModelClassToInit()
-
-        initStatusView(mDataBinding.root as ViewGroup)
+        addStatusView()
     }
 
-    lateinit var sViewHelper: StatusViewHelper
+    lateinit var statusViewHelper: StatusViewHelper
 
-    private fun initStatusView(container: ViewGroup) {
-        sViewHelper = StatusViewHelper(LayoutInflater.from(this), container)
-        var view: ViewGroup = this.findViewById(android.R.id.content)
-        view.addView(sViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+    /**
+     * 创建StatusView，并加入到activity中
+     */
+    private fun addStatusView() {
+        statusViewHelper = StatusViewHelper(LayoutInflater.from(this), mDataBinding.root as ViewGroup)
+        val view: ViewGroup = this.findViewById(android.R.id.content)
+        view.addView(statusViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        statusViewHelper.setRefreshClick {
+            mViewModel.refresh()
+        }
     }
 
+    /**
+     * 通过设置NetworkState，动态改变界面的状态
+     */
+    fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
+        if (haveLocalData && Status.FAILED == ns.status) {
+            statusViewHelper.setNs(NetworkState.LOADED)
+            SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
+                mViewModel.refresh()
+            }, Snackbar.LENGTH_LONG)
+        } else {
+            statusViewHelper.setNs(ns)
+        }
+    }
 
     private fun genericViewModelClassToInit() {
         val modelClass: Class<V>

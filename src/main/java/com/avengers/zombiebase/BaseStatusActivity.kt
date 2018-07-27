@@ -17,12 +17,12 @@ abstract class BaseStatusActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         view = findViewById(android.R.id.content)
-       // sViewHelper = StatusViewHelper(LayoutInflater.from(this))
-     //   sViewHelper.networkStateDataBinding?.ns = getNetworkState()
+       // statusViewHelper = statusViewHelper(LayoutInflater.from(this))
+     //   statusViewHelper.networkStateDataBinding?.ns = getNetworkState()
 
        // val frameLayout = view as ViewGroup
        // myContentView = frameLayout.getChildAt(0)
-       // frameLayout.addView(sViewHelper.baseStatusLayout)
+       // frameLayout.addView(statusViewHelper.baseStatusLayout)
     }
 
 
