@@ -38,9 +38,14 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : ViewModel, P : Repositor
         super.onCreateView(inflater, container, savedInstanceState)
         aacHelp = AACBaseHelp(this, this)
         genericViewModelClassToInit(inflater, container)
+        initStatusView(container)
+        return mDataBinding.root
+    }
+
+
+    private fun initStatusView(container: ViewGroup?) {
         sViewHelper = StatusViewHelper(LayoutInflater.from(context), container)
         (mDataBinding.root as ViewGroup).addView(sViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
-        return mDataBinding.root
     }
 
 

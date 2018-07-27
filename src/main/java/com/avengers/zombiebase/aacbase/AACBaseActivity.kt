@@ -5,6 +5,9 @@ import android.arch.lifecycle.ViewModelProvider
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -29,10 +32,21 @@ abstract class AACBaseActivity<B : ViewDataBinding, V : ViewModel, P : Repositor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         aacHelp = AACBaseHelp(this, this)
         genericViewModelClassToInit()
-        return
+
+        initStatusView(mDataBinding.root as ViewGroup)
     }
+
+    lateinit var sViewHelper: StatusViewHelper
+
+    private fun initStatusView(container: ViewGroup) {
+        sViewHelper = StatusViewHelper(LayoutInflater.from(this), container)
+        var view: ViewGroup = this.findViewById(android.R.id.content)
+        view.addView(sViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+    }
+
 
     private fun genericViewModelClassToInit() {
         val modelClass: Class<V>
