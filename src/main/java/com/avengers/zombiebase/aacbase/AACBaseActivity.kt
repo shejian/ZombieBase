@@ -52,11 +52,28 @@ abstract class AACBaseActivity<B : ViewDataBinding, V : BaseViewModel<*, *>, P :
         }
     }
 
-    /**
+
+/*
+  /**
      * 通过设置NetworkState，动态改变界面的状态
      */
-    fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
+ fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
         if (haveLocalData && Status.FAILED == ns.status) {
+            statusViewHelper.setNs(NetworkState.LOADED)
+            SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
+                mViewModel.refresh()
+            }, Snackbar.LENGTH_LONG)
+        } else {
+            statusViewHelper.setNs(ns)
+        }
+    }*/
+
+
+    /**
+     * 通过设置NetworkState
+     */
+    fun settingStatusView(ns: NetworkState) {
+        if (Status.CACHED_FAILED == ns.status) {
             statusViewHelper.setNs(NetworkState.LOADED)
             SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
                 mViewModel.refresh()

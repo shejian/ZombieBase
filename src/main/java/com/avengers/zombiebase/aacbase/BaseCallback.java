@@ -33,7 +33,7 @@ public class BaseCallback<T extends IBeanResponse> extends LifeCallAdapterFactor
                 }
             } else {
                 if (repositoryRef.get() != null) {
-                    if(repositoryRef.get().haveData()) {
+                    if (repositoryRef.get().haveData()) {
                         repositoryRef.get().getNetWorkState().postValue(NetworkState.Companion.cachedError("failed have data"));
                     } else {
                         repositoryRef.get().getNetWorkState().postValue(NetworkState.Companion.error("failed" + response.body().getMessage()));
@@ -45,7 +45,9 @@ public class BaseCallback<T extends IBeanResponse> extends LifeCallAdapterFactor
 
     @Override
     public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
-        if (repositoryRef.get() != null) {
+        if (repositoryRef.get().haveData()) {
+            repositoryRef.get().getNetWorkState().postValue(NetworkState.Companion.cachedError("failed have data"));
+        } else {
             repositoryRef.get().getNetWorkState().postValue(NetworkState.Companion.error("failed"));
         }
     }

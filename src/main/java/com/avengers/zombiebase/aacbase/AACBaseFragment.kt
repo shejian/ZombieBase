@@ -1,5 +1,6 @@
 package com.avengers.zombiebase.aacbase
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.databinding.ViewDataBinding
@@ -55,11 +56,25 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*, *>, P :
         }
     }
 
+    /*
+       通过设置NetworkState，动态改变界面的状态
+       fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
+           if (haveLocalData && Status.FAILED == ns.status) {
+               statusViewHelper.setNs(NetworkState.LOADED)
+               SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
+                   mViewModel.refresh()
+               }, Snackbar.LENGTH_LONG)
+           } else {
+               statusViewHelper.setNs(ns)
+           }
+       }*/
+
+
     /**
-     * 通过设置NetworkState，动态改变界面的状态
+     * 通过设置NetworkState
      */
-    fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
-        if (haveLocalData && Status.FAILED == ns.status) {
+    fun settingStatusView(ns: NetworkState) {
+        if (Status.CACHED_FAILED == ns.status) {
             statusViewHelper.setNs(NetworkState.LOADED)
             SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
                 mViewModel.refresh()
