@@ -14,6 +14,17 @@
         <item name="android:windowMinWidthMinor">90%</item>
     </style>
 
+    <style name="text_18_fa3b3b_bold">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_12_fa3b3b_bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white_80_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <dimen name="design_snackbar_elevation">0dp</dimen>
 </resources>

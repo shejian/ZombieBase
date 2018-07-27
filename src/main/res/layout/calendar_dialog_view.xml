@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ViewSwitcher
+        android:id="@+id/calendar_value_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:background="@color/material_deep_orange_A700">
+
+        <TextView
+            android:id="@+id/calendarView_Str"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:text="选择起始时间段"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/calendarView_start_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="4dp"
+                    android:text="2018 12月1日"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold"/>
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_chevron_right_white_24dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/calendarView_end_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/material_deep_orange_A700"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="4dp"
+                    android:text="2018                 12月7日"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold"/>
+            </FrameLayout>
+        </LinearLayout>
+    </ViewSwitcher>
+
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_leftArrowMask="@drawable/ic_chevron_left_black_24dp"
+        app:mcv_rightArrowMask="@drawable/ic_chevron_right_black_24dp"/>
+
+</LinearLayout>
+

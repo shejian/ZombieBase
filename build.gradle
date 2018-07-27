@@ -76,13 +76,11 @@ dependencies {
     api deps.matisse
     api deps.bugly.crash_report_compiler
     api deps.bugly.tinker_compiler
-
     implementation project(':submoon')
     implementation project(':subearth')
-
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
-
     api files('libs/BaiduLBS_Android.jar')
+    api project(':subdatelib')
 }
