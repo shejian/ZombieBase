@@ -1,15 +1,18 @@
 package com.avengers.zombiebase.aacbase
 
 import android.databinding.DataBindingUtil
-import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.avengers.zombiebase.SnackbarUtil
-import com.avengers.zombiebase.ToastOneUtil
 import com.avengers.zombielibrary.R
 import com.avengers.zombielibrary.databinding.BaseStatusLayoutBinding
 
+/**
+ * 控制显示网络错误，重试的辅助类，配合AACBaseActivity或
+ * 可参见 WeatherActivity 中的实现，
+ * @author Jervis
+ * @
+ */
 class StatusViewHelper(val factory: LayoutInflater, var container: ViewGroup?) {
 
     companion object {
@@ -19,7 +22,7 @@ class StatusViewHelper(val factory: LayoutInflater, var container: ViewGroup?) {
 
     var baseStatusLayout: View
 
-    var baseStatusLayoutBinding: BaseStatusLayoutBinding? = null
+    private var baseStatusLayoutBinding: BaseStatusLayoutBinding? = null
 
 
     init {

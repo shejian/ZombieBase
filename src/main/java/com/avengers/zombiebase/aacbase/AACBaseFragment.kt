@@ -4,10 +4,12 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.avengers.zombiebase.SnackbarUtil
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -15,7 +17,7 @@ import java.lang.reflect.ParameterizedType
  * @author Jervis
  * @date 20180726
  */
-abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*,*>, P : Repository<*, *>>
+abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*, *>, P : Repository<*, *>>
     : Fragment(), AACBaseHelp.IAACHelp<P> {
 
     abstract override val layout: Int
@@ -30,22 +32,41 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*,*>, P : 
 
     lateinit var mDataBinding: B
 
-
-    lateinit var sViewHelper: StatusViewHelper
-
+    lateinit var statusViewHelper: StatusViewHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         aacHelp = AACBaseHelp(this, this)
         genericViewModelClassToInit(inflater, container)
-        initStatusView(container)
+        addStatusView(container)
         return mDataBinding.root
     }
 
+    /**
+     * 创建StatusView，并加入到activity中
+     * 假如mDataBinding.root 不是RelativeLayout或者FrameLayout 有可能会显示不出来
+     */
+    private fun addStatusView(container: ViewGroup?) {
+        statusViewHelper = StatusViewHelper(LayoutInflater.from(context), container)
+        val view: ViewGroup = mDataBinding.root as ViewGroup
+        view.addView(statusViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        statusViewHelper.setRefreshClick {
+            mViewModel.refresh()
+        }
+    }
 
-    private fun initStatusView(container: ViewGroup?) {
-        sViewHelper = StatusViewHelper(LayoutInflater.from(context), container)
-        (mDataBinding.root as ViewGroup).addView(sViewHelper.baseStatusLayout, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+    /**
+     * 通过设置NetworkState，动态改变界面的状态
+     */
+    fun settingStatusView(ns: NetworkState, haveLocalData: Boolean) {
+        if (haveLocalData && Status.FAILED == ns.status) {
+            statusViewHelper.setNs(NetworkState.LOADED)
+            SnackbarUtil.showActionLong(mDataBinding.root, "数据获取失败", "点击重试", {
+                mViewModel.refresh()
+            }, Snackbar.LENGTH_LONG)
+        } else {
+            statusViewHelper.setNs(ns)
+        }
     }
 
 
