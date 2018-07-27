@@ -82,5 +82,5 @@ dependencies {
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
     api files('libs/BaiduLBS_Android.jar')
-    api project(':subdatelib')
+    api project(':subdatelibrary')
 }
