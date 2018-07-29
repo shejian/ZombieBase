@@ -49,7 +49,7 @@
             android:layout_width="20dip"
             android:layout_height="20dip"
             android:layout_gravity="center"
-            android:visibility="@{ns.status!=Status.RUNNING}"
+            android:visibility="@{ns.status==Status.RUNNING}"
             wheel:matProg_barColor="@color/black_54_color"
             wheel:matProg_barWidth="3dp"
             wheel:matProg_progressIndeterminate="true" />
@@ -64,6 +64,6 @@
             android:text="加载失败，点击重试"
             android:textColor="@color/black_54_color"
             android:textSize="14dp"
-            android:visibility="@{ns.status!=Status.FAILED}" />
+            android:visibility="@{ns.status==Status.FAILED}" />
     </LinearLayout>
 </layout>
