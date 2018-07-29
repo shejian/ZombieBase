@@ -26,7 +26,7 @@ public class BaseCallback<T extends IBeanResponse> extends LifeCallAdapterFactor
     @Override
     public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
         if (response.body() != null) {
-            if ("200".equals(response.body().getStatus())) {
+            if (200==response.code()) {//.body().getStatus()
                 if (repositoryRef.get() != null) {
                     repositoryRef.get().saveData(response.body());
                     repositoryRef.get().getNetWorkState().postValue(NetworkState.Companion.getLOADED());

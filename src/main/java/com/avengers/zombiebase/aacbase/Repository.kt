@@ -13,7 +13,7 @@ import java.util.concurrent.Executor
  * 最低颗粒度的情况下包含：一个请求回来的结果，一个请求状态，一个重试或者叫刷新的函数对象
  *
  */
-abstract class Repository<V : IReqParam,T : IBeanResponse>(private val executor: Executor,private var haveCache: Boolean = true) {
+abstract class Repository<V : IReqParam, T : IBeanResponse>(private val executor: Executor, private var haveCache: Boolean = true) {
 
     var netWorkState = MutableLiveData<NetworkState>()
 
@@ -24,11 +24,11 @@ abstract class Repository<V : IReqParam,T : IBeanResponse>(private val executor:
      */
     fun assembleResult(args: V): BaseCoreResult<T> {
 
-        dataSource = getLiveData(haveCache,args)
+        dataSource = getLiveData(haveCache, args)
 
         superRefresh(args)
 
-        return BaseCoreResult(dataSource,netWorkState) {
+        return BaseCoreResult(dataSource, netWorkState) {
             superRefresh(args)
         }
     }
@@ -62,9 +62,12 @@ abstract class Repository<V : IReqParam,T : IBeanResponse>(private val executor:
     /**
      * 获取LiveData，有缓存时取数据库，不要缓存时实例化一个空的LiveData
      */
-    private fun getLiveData(haveCache: Boolean,args: V): LiveData<T> {
+    private fun getLiveData(haveCache: Boolean, args: V): LiveData<T> {
         return when {
-            haveCache -> queryFromDb(args)!!
+            haveCache -> {
+                queryFromDb(args)!!
+            }
+
             else -> MutableLiveData<T>()
         }
     }
