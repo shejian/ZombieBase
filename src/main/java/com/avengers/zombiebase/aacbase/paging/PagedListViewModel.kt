@@ -10,7 +10,8 @@ import com.avengers.zombiebase.aacbase.*
 import com.avengers.zombiebase.aacbase.paging.PagedListRepository
 
 open
-class PagedListViewModel<I : IReqParam, O : IBeanResponse>(private val repository: PagedListRepository<I, O>) : ViewModel() {
+class PagedListViewModel<I : IReqParam, O : IBeanResponse>(private val repository: PagedListRepository<I, O>)
+    : ViewModel() {
 
     companion object {
         const val VISIBLE_THRESHOLD = 5
@@ -35,7 +36,7 @@ class PagedListViewModel<I : IReqParam, O : IBeanResponse>(private val repositor
     private var result: LiveData<ItemCoreResult<O>> = map(queryLiveData) {
         val assembleResult = repository.assembleResult(it)
         //首次打开时主动触发刷新事件
-        assembleResult.refresh.invoke()
+       // assembleResult.refresh.invoke()
         assembleResult
     }
 

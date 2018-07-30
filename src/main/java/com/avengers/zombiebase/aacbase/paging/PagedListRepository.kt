@@ -19,14 +19,14 @@ import com.avengers.zombiebase.aacbase.NetworkState
  *
  */
 abstract class PagedListRepository<V : IReqParam, T : IBeanResponse>(
-        private var haveCache: Boolean = true) {
+        var haveCache: Boolean = true) {
 
     companion object {
         const val DB_PAGE_SIZE = 20
         const val VISIBLE_THRESHOLD = 5
     }
 
-    var refreshState = MutableLiveData<NetworkState>()
+  //  var refreshState = MutableLiveData<NetworkState>()
 
     private lateinit var dataSource: LiveData<T>
 
@@ -35,33 +35,48 @@ abstract class PagedListRepository<V : IReqParam, T : IBeanResponse>(
      */
     fun assembleResult(args: V): ItemCoreResult<T> {
 
-        var callback = getCallBack(args)
+        var callback = when {
+            haveCache -> getCallBack(args)
+            else -> null
+        }
 
-        val dataSourceFactory = getDataSourceFactory()
+        val dataSourceFactory = getDataSourceFactory(args)
 
         val liveDataPagedList = buildLiveDataPagedList(dataSourceFactory, callback)
 
-        return ItemCoreResult(liveDataPagedList, callback.networkState, refreshState,
-                { superRefresh(args) },
-                { callback.helper.retryAllFailed() })
+        return ItemCoreResult(liveDataPagedList,
+                getNetworkState(dataSourceFactory, callback),
+                getRefreshState(dataSourceFactory),
+                { superRefresh(args, dataSourceFactory) },
+                {
+                    getRetryFun(dataSourceFactory, callback)
+                    //  callback.helper.retryAllFailed()
+                })
     }
 
+    abstract fun getRefreshState(factory: DataSource.Factory<Int, T>):LiveData<NetworkState>
 
-    abstract fun buildLiveDataPagedList(factory: DataSource.Factory<Int, T>, callback: PagedListBoundaryCallback<T>): LiveData<PagedList<T>>
+    abstract fun getRetryFun(factory: DataSource.Factory<Int, T>,
+                             callback: PagedListBoundaryCallback<T>?): () -> Unit
 
-    abstract fun getDataSourceFactory(): DataSource.Factory<Int, T>
+    abstract fun getNetworkState(factory: DataSource.Factory<Int, T>,
+                                 callback: PagedListBoundaryCallback<T>?): LiveData<NetworkState>
+
+    abstract fun buildLiveDataPagedList(factory: DataSource.Factory<Int, T>,
+                                        callback: PagedListBoundaryCallback<T>?): LiveData<PagedList<T>>
+
+    abstract fun getDataSourceFactory(args: V): DataSource.Factory<Int, T>
 
     abstract fun getCallBack(args: V): PagedListBoundaryCallback<T>
 
-    private fun superRefresh(args: V) {
-        refreshState.postValue(NetworkState.LOADING)
-        refresh(args)
+    private fun superRefresh(args: V, factory: DataSource.Factory<Int, T>) {
+        refresh(args, factory)
     }
 
     /**
      * 请求刷新数据
      */
-    abstract fun refresh(args: V)
+    abstract fun refresh(args: V, factory: DataSource.Factory<Int, T>)
 
     /**
      * 保存数据。有缓存是需要子类自己实现，不要缓存时直接设置到LiveData中
@@ -77,13 +92,13 @@ abstract class PagedListRepository<V : IReqParam, T : IBeanResponse>(
     /**
      * 获取LiveData，有缓存时取数据库，不要缓存时实例化一个空的LiveData
      */
- /*   private fun getLiveData(haveCache: Boolean, args: V): LiveData<T> {
-        return when {
-            haveCache -> queryFromDb(args)!!
-            else -> MutableLiveData<T>()
-        }
-    }
-*/
+    /*   private fun getLiveData(haveCache: Boolean, args: V): LiveData<T> {
+           return when {
+               haveCache -> queryFromDb(args)!!
+               else -> MutableLiveData<T>()
+           }
+       }
+   */
     /**
      * 有缓存时需要自己实现插入数据库的函数
      */
