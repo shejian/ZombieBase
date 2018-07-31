@@ -13,7 +13,7 @@ import java.util.concurrent.Executor
  * 最低颗粒度的情况下包含：一个请求回来的结果，一个请求状态，一个重试或者叫刷新的函数对象
  *
  */
-abstract class Repository<V : IReqParam, T : IBeanResponse>(private val executor: Executor, private var haveCache: Boolean = true) {
+abstract class Repository<V : IReqParam, T : IBeanResponse>(private val executor: Executor, private var haveCache: Boolean = false) {
 
     var netWorkState = MutableLiveData<NetworkState>()
 
@@ -28,7 +28,7 @@ abstract class Repository<V : IReqParam, T : IBeanResponse>(private val executor
 
         superRefresh(args)
 
-        return BaseCoreResult(dataSource, netWorkState) {
+        return BaseCoreResult(data = dataSource, netWorkState = netWorkState) {
             superRefresh(args)
         }
     }

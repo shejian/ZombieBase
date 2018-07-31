@@ -35,8 +35,8 @@ class PagedListViewModel<I : IReqParam, O : IBeanResponse>(private val repositor
 
     private var result: LiveData<ItemCoreResult<O>> = map(queryLiveData) {
         val assembleResult = repository.assembleResult(it)
-        //首次打开时主动触发刷新事件
-       // assembleResult.refresh.invoke()
+        //使用缓存数据，并且首次打开需要主动触发刷新事件
+        if (repository.haveCache)assembleResult.refresh.invoke()
         assembleResult
     }
 
@@ -45,6 +45,8 @@ class PagedListViewModel<I : IReqParam, O : IBeanResponse>(private val repositor
     var netWorkState: LiveData<NetworkState> = switchMap(result) { it.netWorkState }
 
     var refreshState: LiveData<NetworkState> = switchMap(result) { it.refreshState }
+
+
 
     fun retry() {
         result.value?.retry?.invoke()

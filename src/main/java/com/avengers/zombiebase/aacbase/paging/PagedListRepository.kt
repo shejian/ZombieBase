@@ -26,7 +26,7 @@ abstract class PagedListRepository<V : IReqParam, T : IBeanResponse>(
         const val VISIBLE_THRESHOLD = 5
     }
 
-  //  var refreshState = MutableLiveData<NetworkState>()
+    //  var refreshState = MutableLiveData<NetworkState>()
 
     private lateinit var dataSource: LiveData<T>
 
@@ -48,13 +48,10 @@ abstract class PagedListRepository<V : IReqParam, T : IBeanResponse>(
                 getNetworkState(dataSourceFactory, callback),
                 getRefreshState(dataSourceFactory),
                 { superRefresh(args, dataSourceFactory) },
-                {
-                    getRetryFun(dataSourceFactory, callback)
-                    //  callback.helper.retryAllFailed()
-                })
+                { getRetryFun(dataSourceFactory, callback) })
     }
 
-    abstract fun getRefreshState(factory: DataSource.Factory<Int, T>):LiveData<NetworkState>
+    abstract fun getRefreshState(factory: DataSource.Factory<Int, T>): LiveData<NetworkState>
 
     abstract fun getRetryFun(factory: DataSource.Factory<Int, T>,
                              callback: PagedListBoundaryCallback<T>?): () -> Unit

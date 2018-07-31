@@ -54,6 +54,7 @@ abstract class AACBaseFragment<B : ViewDataBinding, V : BaseViewModel<*, *>, P :
     }
 
 
+
     /**
      * 通过设置NetworkState
      */
