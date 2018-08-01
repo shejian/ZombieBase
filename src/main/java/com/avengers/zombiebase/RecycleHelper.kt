@@ -5,6 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SimpleItemAnimator
 
 import com.avengers.zombielibrary.R
 
@@ -17,7 +18,9 @@ object RecycleHelper {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = layoutManager
-        recyclerView.itemAnimator = DefaultItemAnimator()
+        //recyclerView.itemAnimator.changeDuration = 0
+        (recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+      //  recyclerView.itemAnimator = DefaultItemAnimator()
     }
 
     fun initSwipeRefresh(mSwipeRefreshLayout: SwipeRefreshLayout?, refreshFun: () -> Unit?) {
