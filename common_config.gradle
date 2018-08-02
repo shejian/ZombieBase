@@ -72,27 +72,15 @@ def setDependencies = { extension ->
 
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     //所有的Appmodule需要关联 base的接口项目
-    // kapt 'com.android.databinding:compiler:3.0.1'
     extension.kapt deps.kapt.databinding
     extension.kapt deps.lifecycle.compiler
     extension.kapt deps.alibaba.arouter_compiler
     extension.kapt deps.cd.retrofit_compiler
     extension.kapt deps.room.compiler
     extension.kapt deps.lifecycle.compiler
-    extension.implementation deps.alibaba.arouter
-    extension.implementation deps.lifecycle.extensions
-    extension.implementation deps.kotlin.stdlib
-    extension.implementation deps.support.app_compat
-    extension.implementation deps.support.design
-    extension.implementation deps.support.v4
-    extension.implementation deps.constraint_layout
-    extension.implementation deps.support.multidex
-    extension.implementation 'com.spinytech.ma:macore:0.2.1'
     extension.testImplementation deps.junit
     extension.androidTestImplementation deps.atsl.runner
     extension.androidTestImplementation deps.espresso.core
-    extension.kapt deps.bugly.crash_report_compiler
-    extension.kapt deps.bugly.tinker_compiler
 }
 
 ext.dds = setDependencies
@@ -130,7 +118,6 @@ def setDefLibDependencies = { extension ->
 
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     extension.implementation extension.project(path: ':zombiebase')//所有业务模块Lib需要关联baselib
-    extension.implementation 'com.spinytech.ma:macore:0.2.1'
     extension.kapt deps.alibaba.arouter_compiler
     extension.kapt deps.cd.retrofit_compiler
     extension.kapt deps.room.compiler
@@ -175,11 +162,6 @@ def setComponentsDependencies = { extension ->
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     //所有的Appmodule需要关联 base的接口项目
     extension.implementation deps.kotlin.stdlib
-    extension.implementation deps.support.app_compat
-    extension.implementation deps.support.design
-    extension.implementation deps.support.v4
-    extension.implementation deps.constraint_layout
-    extension.implementation deps.support.multidex
     extension.implementation 'com.spinytech.ma:macore:0.2.1'
     extension.testImplementation deps.junit
     extension.androidTestImplementation deps.atsl.runner

@@ -96,7 +96,7 @@
     <color name="main_red_color">#FA3B3B</color>
     <color name="main_gray_color">#747e89</color>
 
-    <color name="window_background_color">#f7f7f7</color>
+    <color name="window_background_color">#ffffff</color>
     <color name="window_background_color1">#f6f3f7</color>
     <color name="window_background_color2">#eceff1</color>
     <color name="window_background_color3">#f7f4f8</color>
