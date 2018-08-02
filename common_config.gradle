@@ -161,6 +161,10 @@ def setComponentsDependencies = { extension ->
 
     extension.implementation fileTree(include: ['*.jar'], dir: 'libs')
     //所有的Appmodule需要关联 base的接口项目
+    extension.implementation deps.support.app_compat
+    extension.implementation deps.support.design
+    extension.implementation deps.support.v4
+    extension.implementation deps.constraint_layout
     extension.implementation deps.kotlin.stdlib
     extension.implementation 'com.spinytech.ma:macore:0.2.1'
     extension.testImplementation deps.junit
