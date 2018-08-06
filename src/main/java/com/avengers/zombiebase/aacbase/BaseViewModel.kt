@@ -16,7 +16,7 @@ import android.arch.lifecycle.ViewModel
  * netWorkState ：网络状态
  * refresh() ：对外提供的刷新重试函数
  */
-open class BaseViewModel<K : IReqParam,T : IBeanResponse>(private val repository: Repository<K,T>) : ViewModel() {
+open class BaseViewModel<K : IReqParam,T : IBeanResponse>(private val repository: Repository<K,T>) :ViewModel() {
 
     private val queryParam = MutableLiveData<K>()
 
