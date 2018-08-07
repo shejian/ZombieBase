@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import
             alias="Status"
             type="com.avengers.zombiebase.aacbase.Status" />
@@ -20,11 +21,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black_54_color"
         android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="@{state.status != Status.SUCCESS || state.status != Status.CACHED_FAILED}"
-        android:focusable="true">
+        android:visibility="@{!(state.status == Status.SUCCESS || state.status == Status.CACHED_FAILED)}">
 
         <View
             android:layout_width="match_parent"
@@ -33,10 +35,10 @@
             android:visibility="@{state.status == Status.FAILED}" />
 
         <FrameLayout
-            android:background="@color/white"
-            android:visibility="@{state.status == Status.EMPTY}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="@{state.status == Status.EMPTY}">
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"

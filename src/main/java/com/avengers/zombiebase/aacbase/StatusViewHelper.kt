@@ -29,6 +29,7 @@ class StatusViewHelper(val factory: LayoutInflater, var container: ViewGroup?) {
         baseStatusLayoutBinding = DataBindingUtil.inflate(factory, BASE_STATUS_LAYOUT, container, false)
         baseStatusLayout = baseStatusLayoutBinding?.root!!
         baseStatusLayoutBinding?.handlerClick = HandlerClick()
+        baseStatusLayoutBinding?.state = NetworkState.LOADED
     }
 
 
